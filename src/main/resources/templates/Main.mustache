@@ -1,0 +1,31 @@
+<html>
+<title>Авторизация</title>
+<body>
+    <form action="/logout" method="post">
+        <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+        <input type="submit" value="Sign Out"/>
+    </form>
+    <div>
+        <form method="post">
+            <input type="text" name="text" placeholder="Введите сообщение">
+            <input type="text" name="tag" placeholder="Введите тег">
+            <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+            <button type="submit">Отправить</button>
+        </form>
+    </div>
+    <div>Поиск сообщений</div>
+    <form method = "post" action="filter">
+        <input type="text" name="filter">
+        <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+        <button type="submit">Найти</button>
+    </form>
+    <div>Список сообщений</div>
+    {{#messages}}
+    <div>
+        <b>{{id}}</b>
+        <b>{{text}}</b>
+        <b>{{tag}}</b>
+    </div>
+    {{/messages}}
+</body>
+</html>
