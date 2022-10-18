@@ -2,13 +2,29 @@
 <#import "parts/login.ftlh" as login>
 
 <@common.page>
-    <h2>Add new user</h2>
-    ${message!""}
-    <form action=/registration method="post">
-        <div><label> Имя пользователя : <input type="text" name="username"/> </label></div>
-        <div><label> Пароль: <input type="password" name="password"/> </label></div>
-        <div><label> Повторите пароль: <input type="password" name="repeatpassword"/> </label></div>
+    <td><a href="/login">Назад</a> </td>
+    <h2>Регистрация</h2>
+    ${message?ifExists}
+    <form action="/registration" method="post">
+        <div class="form-group">
+            <label class="col-sm-2 col-form-label"> Логин : </label>
+            <div class="col-sm-6">
+                <input type="text" name="username" class="form-control" placegolder="User name"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 col-form-label"> Пароль : </label>
+            <div class="col-sm-6">
+                <input type="password" name="password" class="form-control" placeholder="Password"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 col-form-label"> Повторите пароль : </label>
+            <div class="col-sm-6">
+                <input type="password" name="repeatpassword" class="form-control" placeholder="Repeat password"/>
+            </div>
+        </div>
         <input type="hidden" name="_csrf" value="${_csrf.token}" />
-        <div><input type="submit" value="Registartion"/></div>
+        <button type="submit" class="btn btn-primary mb-2">Зарегистрироваться</button>
     </form>
 </@common.page>

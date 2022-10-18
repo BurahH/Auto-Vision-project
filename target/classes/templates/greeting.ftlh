@@ -1,6 +1,6 @@
 <#import "parts/common.ftlh" as common>
 
 <@common.page>
-<div>Hello, user</div>
-<a href="/main">Main page</a>
+<h5>Приветствуем на сайте системы Auto Vision</h5>
+    <div>Здесь могла бы быть ваша реклама</div>
 </@common.page>

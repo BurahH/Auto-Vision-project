@@ -12,6 +12,8 @@ public class Message {
 
     private String tag;
 
+    private String filename;
+
     public Message(String text, String tag) {
         this.text = text;
         this.tag = tag;
@@ -19,6 +21,14 @@ public class Message {
 
     public Message() {
 
+    }
+
+    public String getFilename() {
+        return filename;
+    }
+
+    public void setFilename(String filename) {
+        this.filename = filename;
     }
 
     public String getText() {
