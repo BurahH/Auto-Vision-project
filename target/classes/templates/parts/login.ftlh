@@ -1,4 +1,9 @@
 <#macro login path>
+    <#if message??>
+        <div class="alert alert-success" role="alert">
+            ${message}
+        </div>
+    </#if>
 <form action="${path}" method="post">
     <div class="form-group">
         <label class="col-sm-2 col-form-label"> Логин : </label>

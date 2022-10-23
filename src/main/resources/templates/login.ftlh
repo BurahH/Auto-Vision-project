@@ -4,5 +4,5 @@
 <@common.page>
     <h2>Вход</h2>
 <@login.login "/login" />
-<a href="/registration">Add new user</a>
+<a href="/registration">Нет аккаунта?</a>
 </@common.page>
