@@ -1,7 +1,6 @@
 package com.AutoVision.servingwebcontent.controller;
 
 import com.AutoVision.servingwebcontent.domain.User;
-import com.AutoVision.servingwebcontent.repos.UserRepos;
 import com.AutoVision.servingwebcontent.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,14 +26,17 @@ public class RegistrationController {
     }
 
     @PostMapping("/registration")
-    public String addUser(@Valid User user,
-                          @RequestParam("repeatPassword") String passwordConfirm,
+    public String addUser(@RequestParam("repeatPassword") String passwordConfirm,
+                          @Valid User user,
                           BindingResult bindingResult,
                           Model model){
         if(bindingResult.hasErrors()){
             Map<String, String> errors = ControllerUtils.getError(bindingResult);
 
             model.mergeAttributes(errors);
+            if(passwordConfirm == ""){
+                model.addAttribute("repeatPasswordError", "Поле повторите пароль не может быть пустым");
+            }
             return "registration";
         }
         if(passwordConfirm == null){

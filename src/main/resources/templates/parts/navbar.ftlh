@@ -20,6 +20,31 @@
                 <a class="nav-link" href="/user">Список пользователей</a>
             </li>
             </#if>
+            <#if isAdmin>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Редактировать цену</a>
+                </li>
+            </#if>
+            <#if isWatchman>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Камера</a>
+                </li>
+            </#if>
+            <#if isWatchman>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Верификация пользователей</a>
+                </li>
+            </#if>
+            <#if isWatchman>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">База номеров</a>
+                </li>
+            </#if>
+            <#if isFullUser>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Парковка</a>
+                </li>
+            </#if>
         </ul>
         <#if "${name}" != "unknown">
             <a class="nav-link mr-3" href="/user/profile" role="button">${name}</a>

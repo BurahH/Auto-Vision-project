@@ -29,8 +29,6 @@ public class User implements UserDetails {
     private String email;
     private String activationCode;
 
-    private boolean needConfirmation;
-
 
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
@@ -39,6 +37,14 @@ public class User implements UserDetails {
 
     public boolean isAdmin(){
         return roles.contains(Role.ADMIN);
+    }
+
+    public boolean isWatchman(){
+        return roles.contains(Role.WATCHMAN);
+    }
+
+    public boolean isFullUser(){
+        return roles.contains(Role.FULL_USER);
     }
 
     public Long getId() {

@@ -63,7 +63,7 @@ public class UserService implements UserDetailsService {
 
     public String addNewUser (User user, String repeatPassword){
         String pas = user.getPassword();
-        if(pas.equals(repeatPassword))
+        if((pas.equals(repeatPassword)) && (repeatPassword != null) && (repeatPassword != ""))
         {
             boolean userExists = searchUser(user);
 
@@ -121,7 +121,7 @@ public class UserService implements UserDetailsService {
     public void redactUser(User user, String username, String email, String password, Map<String, String> form){
         user.setUsername(username);
         user.setEmail(email);
-        if(password != null)
+        if((password != null) && (password != ""))
         {
             user.setPassword(passwordEncoder.encode(password));
         }
@@ -159,7 +159,7 @@ public class UserService implements UserDetailsService {
 
         }
 
-        if(password != null){
+        if((password != null) && (password != "")){
             user.setPassword(passwordEncoder.encode(password));
         }
 
