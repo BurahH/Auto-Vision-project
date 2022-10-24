@@ -12,9 +12,9 @@
             <li class="nav-item active">
                 <a class="nav-link" href="/">Главная</a>
             </li>
-            <li class="nav-item active">
+            <!--<li class="nav-item active">
                 <a class="nav-link" href="/main">Messages</a>
-            </li>
+            </li> -->
             <#if isAdmin>
             <li class="nav-item active">
                 <a class="nav-link" href="/user">Список пользователей</a>
@@ -22,8 +22,10 @@
             </#if>
         </ul>
         <#if "${name}" != "unknown">
-        <div class="navbar-text mr-3">${name}</div>
+            <a class="nav-link mr-3" href="/user/profile" role="button">${name}</a>
         <@login.logout />
+            <#else >
+            <a class="nav-link mr-3" href="/login" role="button">Вход</a>
         </#if>
     </div>
 </nav>

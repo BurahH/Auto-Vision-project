@@ -4,20 +4,18 @@ import com.AutoVision.servingwebcontent.domain.Role;
 import com.AutoVision.servingwebcontent.domain.User;
 import com.AutoVision.servingwebcontent.repos.UserRepos;
 import com.AutoVision.servingwebcontent.service.UserService;
+import org.dom4j.rule.Mode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Arrays;
 import java.util.Map;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/user")
-@PreAuthorize("hasAuthority('ADMIN')")
 public class UserController {
     @Autowired
     private UserRepos userRepos;
@@ -25,12 +23,23 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping
-    public String UserList(Model model){
+    public String UserList(
+            @RequestParam(required = false, defaultValue = "") String filter,
+            Model model){
+        if (filter != null && !filter.isEmpty()) {
+            User user = userService.findUser(filter);
+            model.addAttribute("filtered", filter);
+            model.addAttribute("users", user);
+            return "userList";
+        }
+        model.addAttribute("filtered", "");
         model.addAttribute("users", userService.findAlluser());
         return "userList";
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("{user}")
     public String userEditForm(@PathVariable User user, Model model){
         model.addAttribute("user", user);
@@ -38,11 +47,13 @@ public class UserController {
         return "userEdit";
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @PostMapping
     public String userSave(
             @RequestParam String username,
             @RequestParam String email,
             @RequestParam Map<String, String> form,
+            @RequestParam String password,
             @RequestParam("userId") User user,
                            Model model){
         User userFromDb = userRepos.findByUsername(username);
@@ -65,25 +76,31 @@ public class UserController {
             return "userEdit";
         }
 
-        user.setUsername(username);
-        user.setEmail(email);
-
-        Set<String> roles = Arrays.stream(Role.values()).map(Role::name).collect(Collectors.toSet());
-
-        user.getRoles().clear();
-
-        for (String key : form.keySet()){
-            if (roles.contains(key)){
-                user.getRoles().add(Role.valueOf(key));
-            }
-        }
-
-        userRepos.save(user);
+        userService.redactUser(user, username, email, password, form);
 
         model.addAttribute("classInscription", "alert alert-success");
         model.addAttribute("message", "Пользователь успешно изменен");
         model.addAttribute("user", user);
         model.addAttribute("roles", Role.values());
         return "userEdit";
+    }
+
+    @GetMapping("profile")
+    public String getProfile(Model model, @AuthenticationPrincipal User user){
+        model.addAttribute("username", user.getUsername());
+        model.addAttribute("email", user.getEmail());
+
+        return "profile";
+    }
+
+    @PostMapping("profile")
+    public String updateProfile(
+            @AuthenticationPrincipal User user,
+            @RequestParam String password,
+            @RequestParam String email
+    ){
+        userService.updateProfile(user, password, email);
+
+        return "redirect:/user/profile";
     }
 }

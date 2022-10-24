@@ -24,7 +24,7 @@
         <div class="form-group">
             <label class="col-sm-2 col-form-label"> Пароль : </label>
             <div class="col-sm-6">
-                <input type="text" name="password" class="form-control" value="${user.password}"/>
+                <input type="text" name="password" class="form-control" placeholder="Password"/>
             </div>
         </div>
         <#list roles as role>
