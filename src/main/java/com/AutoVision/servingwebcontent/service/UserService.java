@@ -166,11 +166,9 @@ public class UserService implements UserDetailsService {
         userRepos.save(user);
     }
 
-    public User findUser(String filter) {
-       User findUser = userRepos.findByUsername(filter);
-        if(findUser == null){
-            findUser = userRepos.findByEmail(filter);
-        }
+    public  List<User> findUser(String filter) {
+        List<User> findUser = userRepos.findByUsernameLike(filter + '%');
+         findUser.addAll(userRepos.findByEmailLike(filter + '%'));
         return findUser;
     }
 }

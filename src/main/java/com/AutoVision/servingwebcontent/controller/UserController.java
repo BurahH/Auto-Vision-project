@@ -4,7 +4,6 @@ import com.AutoVision.servingwebcontent.domain.Role;
 import com.AutoVision.servingwebcontent.domain.User;
 import com.AutoVision.servingwebcontent.repos.UserRepos;
 import com.AutoVision.servingwebcontent.service.UserService;
-import org.dom4j.rule.Mode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -29,9 +28,8 @@ public class UserController {
             @RequestParam(required = false, defaultValue = "") String filter,
             Model model){
         if (filter != null && !filter.isEmpty()) {
-            User user = userService.findUser(filter);
             model.addAttribute("filtered", filter);
-            model.addAttribute("users", user);
+            model.addAttribute("users", userService.findUser(filter));
             return "userList";
         }
         model.addAttribute("filtered", "");
@@ -44,6 +42,7 @@ public class UserController {
     public String userEditForm(@PathVariable User user, Model model){
         model.addAttribute("user", user);
         model.addAttribute("roles", Role.values());
+        model.addAttribute("message", null);
         return "userEdit";
     }
 
@@ -55,7 +54,21 @@ public class UserController {
             @RequestParam Map<String, String> form,
             @RequestParam String password,
             @RequestParam("userId") User user,
-                           Model model){
+            @RequestParam(required = false) String adminLogin,
+            Model model){
+        String usernameDef = user.getUsername();
+        if ((adminLogin != null) && (adminLogin != "") && (adminLogin.equals(usernameDef))){
+            userRepos.deleteById(user.getId());
+            return "redirect:/user";
+        }
+        if((adminLogin != null) && (adminLogin != "") && (!adminLogin.equals(usernameDef))){
+            model.addAttribute("classInscription", "alert alert-danger");
+            model.addAttribute("message", "Удаление не удалось, неверный логин");
+            model.addAttribute("user", user);
+            model.addAttribute("roles", Role.values());
+            return "userEdit";
+        }
+
         User userFromDb = userRepos.findByUsername(username);
 
         if ((userFromDb != null) && (user.getId() != userFromDb.getId())) {

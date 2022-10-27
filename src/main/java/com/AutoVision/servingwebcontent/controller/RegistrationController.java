@@ -20,6 +20,16 @@ public class RegistrationController {
     @Autowired
     private UserService userService;
 
+    @GetMapping("/login")
+    public String login(Model model, String error){
+        model.addAttribute("message", null);
+        if(error != null)
+        {
+            model.addAttribute("errorAuth", "Неверные логин или пароль");
+        }
+        return "login";
+    }
+
     @GetMapping("/registration")
     public String registration(){
         return "registration";
@@ -41,6 +51,7 @@ public class RegistrationController {
         }
         if(passwordConfirm == null){
             model.addAttribute("repeatPassword", "Поле повторите пароль не может быть пустым");
+            return "registration";
         }
 
         String check = userService.addNewUser(user, passwordConfirm);
