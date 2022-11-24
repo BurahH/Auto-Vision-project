@@ -30,6 +30,7 @@ public class User implements UserDetails {
     private String activationCode;
 
     private String name;
+    private String number;
     private String photoOsago;
     private String photo;
 
@@ -154,5 +155,13 @@ public class User implements UserDetails {
 
     public void setPhoto(String photo) {
         this.photo = photo;
+    }
+
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
     }
 }

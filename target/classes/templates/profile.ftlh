@@ -18,9 +18,9 @@
                     <div class="card mb-4">
                         <div class="card-body text-center">
                             <#if user.photo??>
-                            <img src="/img/${user.photo}" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
+                            <img src="/img/${user.photo}" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;height: 150px;">
                                 <#else>
-                                    <img src="/img/photostandart.png" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
+                                    <img src="/img/photostandart.png" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;height: 150px;">
                             </#if>
                             <h5 class="my-3">${user.username}</h5>
                             <#if isFullUser>
@@ -36,19 +36,26 @@
                                 <button type="button" class="btn btn-primary" onclick="window.location.href = '/profile/security'">Безопасность</button>
                             </div>
                             <div class="d-flex justify-content-center mb-2">
-                                <button type="button" class="btn btn-outline-primary ms-1" onclick="window.location.href = '/profile/edit/'">Редактировать профиль</button>
+                                <button type="button" class="btn btn-outline-primary ms-1" onclick="window.location.href = '/profile/edit'">Редактировать профиль</button>
                             </div>
                         </div>
                     </div>
+
                     <div class="card mb-4 mb-lg-0">
                         <div class="card-body p-0">
+                            <a class="btn btn-link btn-block text-left" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Полис ОСАГО</a>
+                        </div>
+                    </div>
+                    <div class="collapse multi-collapse card mb-4 mb-lg-0" id="multiCollapseExample1">
+                        <div class="card-body p-0">
                             <#if user.photoOsago??>
-                            <img src="/img/${user.photoOsago}" alt="osago" style="width: 250px;">
+                            <img src="/img/${user.photoOsago}" alt="osago" class="rounded mx-auto d-block" style="width: 350px;height: 350px;">
                                 <#else>
-                                    <img src="/img/documentstandart.png" alt="osago" class="rounded mx-auto d-block" style="width: 250px;">
+                                    <img src="/img/documentstandart.png" alt="osago" class="rounded mx-auto d-block" style="width: 350px;height: 350px;">
                             </#if>
                         </div>
                     </div>
+
                 </div>
                 <div class="col-lg-8">
                     <div class="card mb-4">
@@ -77,11 +84,11 @@
                             <hr>
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <p class="mb-0">Phone</p>
+                                    <p class="mb-0">Номер телефона</p>
                                 </div>
                                 <div class="col-sm-9">
                                     <#if user.name??>
-                                        <p class="text-muted mb-0">${user.phone}</p>
+                                        <p class="text-muted mb-0">${user.number}</p>
                                     <#else>
                                         <p class="text-muted mb-0">Отсутствует</p>
                                     </#if>
