@@ -1,7 +1,9 @@
 package com.AutoVision.servingwebcontent.service;
 
+import com.AutoVision.servingwebcontent.domain.Car;
 import com.AutoVision.servingwebcontent.domain.Role;
 import com.AutoVision.servingwebcontent.domain.User;
+import com.AutoVision.servingwebcontent.repos.CarRepos;
 import com.AutoVision.servingwebcontent.repos.UserRepos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -9,7 +11,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -25,6 +26,9 @@ public class UserService implements UserDetailsService {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private CarRepos carRepos;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -150,7 +154,7 @@ public class UserService implements UserDetailsService {
 
             String message = String.format(
                     "Приветствует Вас в системе Auto Vision \n" +
-                            "Пожалуйста перейдите по ссылке ниже, чтобы подстветдить вам email:\n" +
+                            "Пожалуйста перейдите по ссылке ниже, чтобы подтвердить ваш email:\n" +
                             "http://localhost:8080/activate/%s",
                     user.getActivationCode()
             );
@@ -170,5 +174,24 @@ public class UserService implements UserDetailsService {
         List<User> findUser = userRepos.findByUsernameLike(filter + '%');
          findUser.addAll(userRepos.findByEmailLike(filter + '%'));
         return findUser;
+    }
+
+    public List<Car> findUserCar(Long id){
+        List<Car> cars = carRepos.findByUserId(id);
+        return cars;
+    }
+
+    public String addCar(String model, String number, User user){
+        Car car = new Car();
+        if(carRepos.findByNumber(number) == null) {
+            car.setModel(model);
+            car.setNumber(number);
+            car.setUser(user);
+            carRepos.save(car);
+            return "save";
+        }
+        else{
+            return "Not save";
+        }
     }
 }

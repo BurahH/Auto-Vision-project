@@ -5,7 +5,7 @@
     <#if errorAuth??>
         <div class="alert alert-danger" role="alert" id="div1">
            ${errorAuth}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close" onclick="history.back();">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close" onclick="window.location.href = '/login'">
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>

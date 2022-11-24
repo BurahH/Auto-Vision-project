@@ -29,6 +29,10 @@ public class User implements UserDetails {
     private String email;
     private String activationCode;
 
+    private String name;
+    private String photoOsago;
+    private String photo;
+
 
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
@@ -128,4 +132,27 @@ public class User implements UserDetails {
         this.activationCode = activateCode;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPhotoOsago() {
+        return photoOsago;
+    }
+
+    public void setPhotoOsago(String photoOsago) {
+        this.photoOsago = photoOsago;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
 }

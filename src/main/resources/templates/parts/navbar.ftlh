@@ -44,7 +44,7 @@
             </#if>
         </ul>
         <#if "${name}" != "unknown">
-            <a class="nav-link mr-3" href="/user/profile" role="button">${name}</a>
+            <a class="nav-link mr-3" href="/profile" role="button">${name}</a>
         <@login.logout />
             <#else >
             <a class="nav-link mr-3" href="/login" role="button">Вход</a>

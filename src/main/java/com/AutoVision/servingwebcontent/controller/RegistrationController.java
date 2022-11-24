@@ -21,8 +21,9 @@ public class RegistrationController {
     private UserService userService;
 
     @GetMapping("/login")
-    public String login(Model model, String error){
+    public String login(Model model, String error, String username){
         model.addAttribute("message", null);
+        model.addAttribute("username", username);
         if(error != null)
         {
             model.addAttribute("errorAuth", "Неверные логин или пароль");

@@ -11,7 +11,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/user")
@@ -69,6 +73,28 @@ public class UserController {
             return "userEdit";
         }
 
+        if((user.getEmail().equals(email)) && (user.getUsername().equals(username)) && (((password == null) || (password == "")))){
+            Set<String> roles = Arrays.stream(Role.values()).map(Role::name).collect(Collectors.toSet());
+            User newUser = new User();
+            Set<Role> roles1 = new HashSet<>();
+            roles1.addAll(user.getRoles());
+            newUser.setRoles(roles1);
+            newUser.getRoles().clear();
+
+            for (String key : form.keySet()){
+                if (roles.contains(key)){
+                    newUser.getRoles().add(Role.valueOf(key));
+                }
+            }
+            if(user.getRoles().equals(newUser.getRoles())){
+                model.addAttribute("classInscription", "alert alert-danger");
+                model.addAttribute("message", "Не введено новых данных");
+                model.addAttribute("user", user);
+                model.addAttribute("roles", Role.values());
+                return "userEdit";
+            }
+        }
+
         User userFromDb = userRepos.findByUsername(username);
 
         if ((userFromDb != null) && (user.getId() != userFromDb.getId())) {
@@ -96,24 +122,5 @@ public class UserController {
         model.addAttribute("user", user);
         model.addAttribute("roles", Role.values());
         return "userEdit";
-    }
-
-    @GetMapping("profile")
-    public String getProfile(Model model, @AuthenticationPrincipal User user){
-        model.addAttribute("username", user.getUsername());
-        model.addAttribute("email", user.getEmail());
-
-        return "profile";
-    }
-
-    @PostMapping("profile")
-    public String updateProfile(
-            @AuthenticationPrincipal User user,
-            @RequestParam String password,
-            @RequestParam String email
-    ){
-        userService.updateProfile(user, password, email);
-
-        return "redirect:/user/profile";
     }
 }
