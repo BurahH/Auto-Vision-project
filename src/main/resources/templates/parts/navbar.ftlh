@@ -24,12 +24,7 @@
             </#if>
             <#if isWatchman>
                 <li class="nav-item active">
-                    <a class="nav-link" href="/">Камера</a>
-                </li>
-            </#if>
-            <#if isWatchman>
-                <li class="nav-item active">
-                    <a class="nav-link" href="/">Верификация пользователей</a>
+                    <a class="nav-link" href="/checklist">Верификация пользователей</a>
                 </li>
             </#if>
             <#if isWatchman>
@@ -37,7 +32,7 @@
                     <a class="nav-link" href="/">База номеров</a>
                 </li>
             </#if>
-            <#if isFullUser>
+            <#if isUser>
                 <li class="nav-item active">
                     <a class="nav-link" href="/">Парковка</a>
                 </li>

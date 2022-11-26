@@ -40,6 +40,16 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Set<Role> roles;
 
+    public boolean checkDate(){
+        if((name == null) || (number == null) || (photo == null) || (photoOsago == null))
+        {
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+
     public boolean isAdmin(){
         return roles.contains(Role.ADMIN);
     }
@@ -50,6 +60,9 @@ public class User implements UserDetails {
 
     public boolean isFullUser(){
         return roles.contains(Role.FULL_USER);
+    }
+    public boolean isUser(){
+        return roles.contains(Role.USER);
     }
 
     public Long getId() {

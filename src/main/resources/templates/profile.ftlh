@@ -1,6 +1,5 @@
 <#include "parts/securuty.ftlh">
 <#import "parts/common.ftlh" as common>
-<#import "parts/login.ftlh" as login>
 
 <@common.page>
     <#if message??>
