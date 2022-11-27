@@ -54,6 +54,8 @@ public class UserController {
             @RequestParam String email,
             @RequestParam Map<String, String> form,
             @RequestParam String password,
+            @RequestParam String name,
+            @RequestParam String number,
             @RequestParam("userId") User user,
             @RequestParam(required = false) String adminLogin,
             Model model){
@@ -70,7 +72,7 @@ public class UserController {
             return "userEdit";
         }
 
-        if((user.getEmail().equals(email)) && (user.getUsername().equals(username)) && (((password == null) || (password == "")))){
+        if((user.getNumber().equals(number)) && (user.getName().equals(name)) && (user.getEmail().equals(email)) && (user.getUsername().equals(username)) && (((password == null) || (password == "")))){
             Set<String> roles = Arrays.stream(Role.values()).map(Role::name).collect(Collectors.toSet());
             User newUser = new User();
             Set<Role> roles1 = new HashSet<>();
@@ -112,7 +114,7 @@ public class UserController {
             return "userEdit";
         }
 
-        userService.redactUser(user, username, email, password, form);
+        userService.redactUser(user, username, email, password, form, name, number);
 
         model.addAttribute("classInscription", "alert alert-success");
         model.addAttribute("message", "Пользователь успешно изменен");

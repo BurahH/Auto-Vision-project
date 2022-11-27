@@ -24,6 +24,45 @@
                 <input type="text" name="username" class="form-control" value="${user.username}"/>
             </div>
         </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 col-form-label"> ФИО : </label>
+            <div class="col-sm-6">
+                <input type="text" name="name" class="form-control" value="<#if user.name??>${user.name}</#if>"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 col-form-label"> Номер телефона : </label>
+            <div class="col-sm-6">
+                <input type="text" name="number" class="form-control" value="<#if user.number??>${user.number}</#if>"/>
+            </div>
+        </div>
+
+        <div class="card mb-8 mb-lg-0">
+            <div class="card-body p-0">
+                <a class="btn btn-link btn-block text-left" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Полис ОСАГО</a>
+            </div>
+        </div>
+        <div class="collapse multi-collapse card mb-8 mb-lg-0" id="multiCollapseExample1">
+            <div class="card-body p-0">
+                <img src="/img/<#if user.photoOsago??>${user.photoOsago}<#else>documentstandart.png</#if>" alt="osago" class="rounded mx-auto d-block" style="width: 600px;height: 600px;">
+            </div>
+        </div>
+
+        <div class="card mb-8 mb-lg-0">
+            <div class="card-body p-0">
+                <a class="btn btn-link btn-block text-left" data-toggle="collapse" href="#multiCollapseExample2" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Фото пользователя</a>
+            </div>
+        </div>
+        <div class="collapse multi-collapse card mb-8 mb-lg-0" id="multiCollapseExample2">
+            <div class="card-body p-0">
+                <img src="/img/<#if user.photo??>${user.photo}<#else>photostandart.png</#if>" alt="osago" class="rounded mx-auto d-block" style="width: 600px;height: 600px;">
+            </div>
+        </div>
+
+
+
+
         <div class="form-group">
             <label class="col-sm-2 col-form-label"> Пароль : </label>
             <div class="col-sm-6">

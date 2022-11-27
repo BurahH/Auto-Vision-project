@@ -1,7 +1,7 @@
 <#import "parts/common.ftlh" as common>
 
 <@common.page>
-    <h2>Редактировать пользователя</h2>
+    <h2>Верифиуировать пользователя</h2>
 
     <form action="/checklist" method="post">
         <div class="form-group">
@@ -49,6 +49,6 @@
         <input type="hidden" name="_csrf" value="${_csrf.token}" />
         <button type="submit" class="btn btn-primary mb-2">Данные верны</button>
     </form>
-    <a class="btn btn-light" href="/user/list" role="button">Назад</a>
+    <a class="btn btn-light" href="/checklist" role="button">Назад</a>
 
 </@common.page>

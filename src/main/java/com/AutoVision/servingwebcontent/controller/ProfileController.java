@@ -1,6 +1,7 @@
 package com.AutoVision.servingwebcontent.controller;
 
 import com.AutoVision.servingwebcontent.domain.Car;
+import com.AutoVision.servingwebcontent.domain.Role;
 import com.AutoVision.servingwebcontent.domain.User;
 import com.AutoVision.servingwebcontent.repos.CarRepos;
 import com.AutoVision.servingwebcontent.repos.UserRepos;
@@ -33,8 +34,9 @@ public class ProfileController {
     private String uploadPath;
 
     @GetMapping("profile")
-    public String getProfile(Model model, @AuthenticationPrincipal User user){
+    public String getProfile(Model model, @AuthenticationPrincipal User user){   //TODO Реализовать удаление автомобилей
         model.addAttribute("user", user);
+        model.addAttribute("message", null);
 
         List<Car> cars = userService.findUserCar(user.getId());
         model.addAttribute("car", cars);
@@ -45,10 +47,12 @@ public class ProfileController {
     @PostMapping("profile")
     public String newCar(Model model, @AuthenticationPrincipal User user,
                          @RequestParam String modelCar,
-                         @RequestParam String number){
-        String message = userService.addCar(modelCar, number, user);
+                         @RequestParam String number,
+                         @RequestParam String vin,
+                         MultipartFile sts) throws IOException {
+        String message = userService.addCar(modelCar, number, user, vin, sts);
         if(message == "Not save"){
-            model.addAttribute("message", "Автомобиль с таким номер уже существует");
+            model.addAttribute("message", "Автомобиль с таким номер/vin уже существует");
         }
         model.addAttribute("user", user);
 
@@ -76,10 +80,8 @@ public class ProfileController {
                                         @RequestParam String email
     ){
         userService.updateProfile(user, password, email);
-        String message = "aaaa";
         model.addAttribute("username", user.getUsername());
         model.addAttribute("email", user.getEmail());
-        model.addAttribute("message", message);
 
         return "profileSecurity";
     }
@@ -106,6 +108,9 @@ public class ProfileController {
             String resultFilename = uuidFile + "." + photo.getOriginalFilename();
             photo.transferTo(new File(uploadPath + "/" + resultFilename));
             user.setPhoto(resultFilename);
+            if(user.getRoles().contains(Role.FULL_USER)) {
+                user.getRoles().remove(Role.FULL_USER);
+            }
         }
         if(!osago.isEmpty()) {
             File uploadDir2 = new File(uploadPath);
@@ -116,12 +121,23 @@ public class ProfileController {
             String resultFilename2 = uuidFile2 + "." + osago.getOriginalFilename();
             osago.transferTo(new File(uploadPath + "/" + resultFilename2));
             user.setPhotoOsago(resultFilename2);
+            if(user.getRoles().contains(Role.FULL_USER)) {
+                user.getRoles().remove(Role.FULL_USER);
+            }
         }
-
-        user.setName(name);
-        user.setNumber(number);
-
-        userRepos.save(user);  //TODO сброс роли full_user
+        if(!user.getName().equals(name)) {
+            user.setName(name);
+            if(user.getRoles().contains(Role.FULL_USER)) {
+                user.getRoles().remove(Role.FULL_USER);
+            }
+        }
+        if(!user.getNumber().equals(number)){
+            user.setNumber(number);
+            if(user.getRoles().contains(Role.FULL_USER)) {
+                user.getRoles().remove(Role.FULL_USER);
+            }
+        }
+        userRepos.save(user);
 
         model.addAttribute("user", user);
 

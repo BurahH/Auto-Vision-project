@@ -1,5 +1,9 @@
 package com.AutoVision.servingwebcontent.domain;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -11,10 +15,14 @@ public class Car {
 
     private String number;
     private String model;
+    private String vin;
+
+    private String sts;
 
     private boolean active;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     private User user;
 
@@ -60,5 +68,21 @@ public class Car {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public String getVin() {
+        return vin;
+    }
+
+    public void setVin(String vin) {
+        this.vin = vin;
+    }
+
+    public String getSts() {
+        return sts;
+    }
+
+    public void setSts(String sts) {
+        this.sts = sts;
     }
 }

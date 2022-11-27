@@ -19,12 +19,22 @@
             </#if>
             <#if isAdmin>
                 <li class="nav-item active">
+                    <a class="nav-link" href="/car">Список автомобилей</a>
+                </li>
+            </#if>
+            <#if isAdmin>
+                <li class="nav-item active">
                     <a class="nav-link" href="/">Редактировать цену</a>
                 </li>
             </#if>
             <#if isWatchman>
                 <li class="nav-item active">
                     <a class="nav-link" href="/checklist">Верификация пользователей</a>
+                </li>
+            </#if>
+            <#if isWatchman>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/checklist/carlist">Верификация автомобилей</a>
                 </li>
             </#if>
             <#if isWatchman>

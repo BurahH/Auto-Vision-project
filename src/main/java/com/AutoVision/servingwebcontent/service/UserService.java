@@ -6,12 +6,16 @@ import com.AutoVision.servingwebcontent.domain.User;
 import com.AutoVision.servingwebcontent.repos.CarRepos;
 import com.AutoVision.servingwebcontent.repos.UserRepos;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -29,6 +33,9 @@ public class UserService implements UserDetailsService {
 
     @Autowired
     private CarRepos carRepos;
+
+    @Value("${upload.path}")
+    private String uploadPath;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -122,9 +129,11 @@ public class UserService implements UserDetailsService {
         return true;
     }
 
-    public void redactUser(User user, String username, String email, String password, Map<String, String> form){
+    public void redactUser(User user, String username, String email, String password, Map<String, String> form, String name, String number){
         user.setUsername(username);
         user.setEmail(email);
+        user.setNumber(number);
+        user.setName(name);
         if((password != null) && (password != ""))
         {
             user.setPassword(passwordEncoder.encode(password));
@@ -181,9 +190,18 @@ public class UserService implements UserDetailsService {
         return cars;
     }
 
-    public String addCar(String model, String number, User user){
+    public String addCar(String model, String number, User user, String vin, MultipartFile sts) throws IOException {
         Car car = new Car();
-        if(carRepos.findByNumber(number) == null) {
+        if((carRepos.findByNumber(number) == null) && (carRepos.findByVin(vin) == null)) {
+            File uploadDir = new File(uploadPath);
+            if (!uploadDir.exists()) {
+                uploadDir.mkdir();
+            }
+            String uuidFile = UUID.randomUUID().toString();
+            String resultFilename = uuidFile + "." + sts.getOriginalFilename();
+            sts.transferTo(new File(uploadPath + "/" + resultFilename));
+            car.setSts(resultFilename);
+            car.setVin(vin);
             car.setModel(model);
             car.setNumber(number);
             car.setUser(user);

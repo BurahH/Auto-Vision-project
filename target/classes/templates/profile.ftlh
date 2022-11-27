@@ -2,14 +2,6 @@
 <#import "parts/common.ftlh" as common>
 
 <@common.page>
-    <#if message??>
-        <div class="alert alert-danger" role="alert">
-            ${message}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-    </#if>
     <script src="https://snipp.ru/cdn/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://snipp.ru/cdn/maskedinput/jquery.maskedinput.min.js"></script>
             <div class="row">
@@ -101,11 +93,14 @@
                             <div class="card-body">
                                 <h5 class="my-3">Автомобили</h5>
                                 <div class="row">
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-3">
                                         <p class="mb-0">Модель автомобиля</p>
                                     </div>
-                                    <div class="col-sm-3">
+                                    <div class="col-sm-2">
                                         <p class="text-muted mb-0">Номер автомобиля</p>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <p class="text-muted mb-0">VIN номер</p>
                                     </div>
                                     <div class="col-sm-3">
                                         <p class="text-muted mb-0">Статус</p>
@@ -115,11 +110,14 @@
                                 <#if car??>
                                     <#list car as cars>
                                         <div class="row">
-                                            <div class="col-sm-6">
+                                            <div class="col-sm-3">
                                                 <p class="mb-0">${cars.model}</p>
                                             </div>
-                                            <div class="col-sm-3">
+                                            <div class="col-sm-2">
                                                 <p class="text-muted mb-0">${cars.number}</p>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <p class="text-muted mb-0">${cars.vin}</p>
                                             </div>
                                             <#if cars.active>
                                             <div class="col-sm-3">
@@ -158,21 +156,43 @@
                 </div>
                 <div class="modal-body">
                     Пожалуйста введите модель автомобиля и его номер (После добавления необходимо дождаться подтверждения)
-                    <form method="post" id="newCar">
+                    <form method="post" id="newCar" enctype="multipart/form-data">
                         <div class="form-group">
                             <label class="col-sm-2 col-form-label"> Модель: </label>
                             <div class="col-sm-6">
                                 <input type="text" name="modelCar" class="form-control" placeholder="Модель автомобиля" required/>
+                                <div class="invalid-feedback">
+                                    Поле Модель автомобиля не может быть пустым
+                                </div>
                             </div>
                             <label class="col-sm-2 col-form-label"> Номер (Большими буквами): </label>
                             <div class="col-sm-6">
-                                <input type="text" name="number" class="mask-car form-control text-uppercase" placeholder="A000AA"/>
+                                <input type="text" name="number" class="mask-car form-control text-uppercase" placeholder="A000AA" required/>
+                                <div class="invalid-feedback">
+                                    Поле номер не может быть пустым
+                                </div>
+                            </div>
+                            <label class="col-sm-2 col-form-label"> Vin номер: </label>
+                            <div class="col-sm-6">
+                                <input type="text" name="vin" class="form-control text-uppercase" placeholder="vin" required/>
+                                <div class="invalid-feedback">
+                                    Поле Vin номер не может быть пустым
+                                </div>
+                            </div>
+                            <div class="form-group">
+                            <label class="col-sm-2 col-form-label"> Фото СТС : </label>
+                            <div class="col-sm-6">
+                                <input type="file" name="sts" required>
+                                <div class="invalid-feedback">
+                                    Поле фото стс не может быть пустым
+                                </div>
+                            </div>
                             </div>
                         </div>
                         <input type="hidden" name="_csrf" value="${_csrf.token}" />
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
-                            <button type="submit" class="btn btn-primary" name="delete">Добавить</button>
+                            <button type="submit" class="btn btn-primary">Добавить</button>
                         </div>
                     </form>
                 </div>

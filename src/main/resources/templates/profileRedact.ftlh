@@ -12,7 +12,7 @@
             </button>
         </div>
     </#if>
-    <h2>Редактированеи пользователя</h2>
+    <h2>Редактирование пользователя</h2>
     <form method="post" enctype="multipart/form-data">
         <div class="form-group">
             <label class="col-sm-2 col-form-label"> ФИО : </label>
