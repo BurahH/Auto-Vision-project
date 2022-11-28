@@ -2,8 +2,10 @@ package com.AutoVision.servingwebcontent.controller;
 
 import com.AutoVision.servingwebcontent.domain.Car;
 import com.AutoVision.servingwebcontent.domain.Role;
+import com.AutoVision.servingwebcontent.domain.Story;
 import com.AutoVision.servingwebcontent.domain.User;
 import com.AutoVision.servingwebcontent.repos.CarRepos;
+import com.AutoVision.servingwebcontent.repos.StoryRepos;
 import com.AutoVision.servingwebcontent.repos.UserRepos;
 import com.AutoVision.servingwebcontent.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,9 @@ public class verificationController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private StoryRepos storyRepos;
 
     @Autowired
     private CarRepos carRepos;
@@ -47,7 +52,23 @@ public class verificationController {
 
     @PreAuthorize("hasAuthority('WATCHMAN')")
     @GetMapping("{user}")
-    public String userCheckEdit(@PathVariable User user, Model model){
+    public String userCheckEdit(@PathVariable User user,
+                                @RequestParam(required = false) Long id,
+                                Model model){
+        if(id != null){
+            User user1 = userRepos.getOne(id);
+            String message = String.format(
+                    "Вас приветствует система Auto Vision \n" +
+                            "Введенные вами личные данные были признаны неверными, пожалуйста проверьте и введите их еще раз\n"
+            );
+            userService.getMessage(user, message);
+            user.setName(null);
+            user.setNumber(null);
+            user.setPhoto(null);
+            user.setPhotoOsago(null);
+            userRepos.save(user);
+            return "redirect:/checklist";
+        }
         model.addAttribute("user", user);
         return "userCheckEdit";
     }
@@ -82,8 +103,22 @@ public class verificationController {
 
     @PreAuthorize("hasAuthority('WATCHMAN')")
     @GetMapping("/carlist/{id}")
-    public String carCheckEdit(@PathVariable Long id, Model model){
-        Car car = carRepos.findById(id);
+    public String carCheckEdit(@PathVariable Long id,
+                               @RequestParam(required = false) Long carid,
+                               Model model){
+        Car car = carRepos.getOne(id);
+        if(carid != null){
+            User user1 = userRepos.getOne(id);
+            String message = String.format(
+                    "Вас приветствует система Auto Vision \n" +
+                            "Введенные вами данные об автомобиле " + car.getModel() +" были признаны неверными, пожалуйста проверьте и введите их еще раз\n"
+            );
+            List<Story> stories = storyRepos.findByCarId(id);
+            storyRepos.deleteAll(stories);
+            carRepos.delete(car);
+            userService.getMessage(car.getUser(), message);
+            return "redirect:/checklist/carlist";
+        }
         model.addAttribute("car", car);
         return "carCheckEdit";
     }
@@ -91,7 +126,7 @@ public class verificationController {
     @PreAuthorize("hasAuthority('WATCHMAN')")
     @PostMapping("/carlist")
     public String carGetActive(@RequestParam("carId") Long id, Model model){
-        Car car = carRepos.findById(id);
+        Car car = carRepos.getOne(id);
         car.setActive(true);
         carRepos.save(car);                       //TODO Добавление в базу номеров
 

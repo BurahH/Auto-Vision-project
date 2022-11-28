@@ -43,7 +43,7 @@ public class mainController {
     @GetMapping("/")
     public String greeting(Model model,
     @AuthenticationPrincipal User user) {
-        if(user.isUser())
+      if(user.isUser())
         {
             if(parkingPlaceRepos.findByUserId(user.getId()).size() != 0)
             {
@@ -79,6 +79,7 @@ public class mainController {
         else {
             return "greeting";
         }
+
     }
 
     /*@GetMapping("/main")

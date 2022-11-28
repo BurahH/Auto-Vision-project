@@ -1,7 +1,11 @@
 package com.AutoVision.servingwebcontent.controller;
 
+import com.AutoVision.servingwebcontent.domain.Car;
 import com.AutoVision.servingwebcontent.domain.Role;
+import com.AutoVision.servingwebcontent.domain.Story;
 import com.AutoVision.servingwebcontent.domain.User;
+import com.AutoVision.servingwebcontent.repos.CarRepos;
+import com.AutoVision.servingwebcontent.repos.StoryRepos;
 import com.AutoVision.servingwebcontent.repos.UserRepos;
 import com.AutoVision.servingwebcontent.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +14,9 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -19,6 +25,12 @@ import java.util.stream.Collectors;
 public class UserController {
     @Autowired
     private UserRepos userRepos;
+
+    @Autowired
+    private CarRepos carRepos;
+
+    @Autowired
+    private StoryRepos storyRepos;
 
     @Autowired
     private UserService userService;
@@ -58,13 +70,21 @@ public class UserController {
             @RequestParam String number,
             @RequestParam("userId") User user,
             @RequestParam(required = false) String adminLogin,
-            Model model){
+            MultipartFile photo,
+            MultipartFile photoOsago,
+            Model model) throws IOException {
         String usernameDef = user.getUsername();
         if ((adminLogin != null) && (adminLogin != "") && (adminLogin.equals(usernameDef))){
+            List<Car> cars = carRepos.findByUserId(user.getId());
+            for(Car car : cars) {
+                List<Story> stories = storyRepos.findByCarId(car.getId());
+                storyRepos.deleteAll(stories);
+            }
+            carRepos.deleteAll(cars);
             userRepos.deleteById(user.getId());
             return "redirect:/user";
         }
-        if((adminLogin != null) && (adminLogin != "") && (!adminLogin.equals(usernameDef))){
+        if((!adminLogin.equals(null)) && (!adminLogin.equals("")) && (!adminLogin.equals(usernameDef))){
             model.addAttribute("classInscription", "alert alert-danger");
             model.addAttribute("message", "Удаление не удалось, неверный логин");
             model.addAttribute("user", user);
@@ -72,7 +92,7 @@ public class UserController {
             return "userEdit";
         }
 
-        if((user.getNumber().equals(number)) && (user.getName().equals(name)) && (user.getEmail().equals(email)) && (user.getUsername().equals(username)) && (((password == null) || (password == "")))){
+        if((!user.haveNew(username, email, name, number)) && (photoOsago.isEmpty()) && (photo.isEmpty()) && (((password.equals(null)) || (password.equals(""))))){
             Set<String> roles = Arrays.stream(Role.values()).map(Role::name).collect(Collectors.toSet());
             User newUser = new User();
             Set<Role> roles1 = new HashSet<>();
@@ -114,7 +134,7 @@ public class UserController {
             return "userEdit";
         }
 
-        userService.redactUser(user, username, email, password, form, name, number);
+        userService.redactUser(user, username, email, password, form, name, number, photo, photoOsago);
 
         model.addAttribute("classInscription", "alert alert-success");
         model.addAttribute("message", "Пользователь успешно изменен");

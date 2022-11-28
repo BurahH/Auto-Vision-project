@@ -49,6 +49,11 @@
         <input type="hidden" name="_csrf" value="${_csrf.token}" />
         <button type="submit" class="btn btn-primary mb-2">Данные верны</button>
     </form>
+    <form action="/checklist/${user.id}" method="get">
+        <input type="hidden" value="${user.id}" name="id">
+        <input type="hidden" name="_csrf" value="${_csrf.token}" />
+        <button type="submit" class="btn btn-primary mb-2">Отказ в верификации</button>
+    </form>
     <a class="btn btn-light" href="/checklist" role="button">Назад</a>
 
 </@common.page>

@@ -11,7 +11,7 @@
     </#if>
     <h2>Редактировать автомобиль</h2>
 
-    <form action="/car" method="post">
+    <form action="/car" method="post" id="editUser" enctype="multipart/form-data">
         <div class="form-group">
             <label class="col-sm-3 col-form-label"> Логин : </label>
             <div class="col-sm-6">
@@ -21,7 +21,7 @@
         <div class="form-group">
             <label class="col-sm-3 col-form-label"> ФИО пользователя : </label>
             <div class="col-sm-6">
-                <p class="text-muted mb-0">${car.user.name}</p>
+                <p class="text-muted mb-0"><#if car.user.name??>${car.user.name}</#if></p>
             </div>
         </div>
         <div class="form-group">
@@ -50,7 +50,7 @@
         </div>
         <div class="collapse multi-collapse card mb-8 mb-lg-0" id="multiCollapseExample1">
             <div class="card-body p-0">
-                <img src="/img/${car.user.photoOsago}" alt="osago" class="rounded mx-auto d-block" style="width: 600px;height: 600px;">
+                <img src="/img/<#if car.user.photoOsago??>${car.user.photoOsago}<#else>documentstandart.png</#if>" alt="osago" class="rounded mx-auto d-block" style="width: 600px;height: 600px;">
             </div>
         </div>
 
@@ -64,6 +64,11 @@
                 <img src="/img/${car.sts}" alt="osago" class="rounded mx-auto d-block" style="width: 600px;height: 600px;">
             </div>
         </div>
+        <div class="form-group">
+            <label class="col-sm-2 col-form-label"> Изменить фото СТС : </label>
+            <div class="col-sm-6">
+                <input type="file" name="sts">
+            </div>
 
         <div>
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal">
@@ -99,7 +104,7 @@
 
         <input type="hidden" value="${car.id}" name="carId">
         <input type="hidden" name="_csrf" value="${_csrf.token}" />
-        <button type="submit" class="btn btn-primary mb-2">Сохранить</button>
+        <button type="submit" class="btn btn-primary mb-2" onclick="form_submit()">Сохранить</button>
     </form>
     <a class="btn btn-light" href="/car" role="button">Назад</a>
 

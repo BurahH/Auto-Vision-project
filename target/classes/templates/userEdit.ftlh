@@ -11,7 +11,7 @@
     </#if>
    <h2>Редактировать пользователя</h2>
 
-    <form action="/user" method="post" id="editUser">
+    <form action="/user" method="post" id="editUser" enctype="multipart/form-data">
         <div class="form-group">
             <label class="col-sm-2 col-form-label"> E-mail : </label>
             <div class="col-sm-6">
@@ -37,6 +37,12 @@
                 <input type="text" name="number" class="form-control" value="<#if user.number??>${user.number}</#if>"/>
             </div>
         </div>
+        <div class="form-group">
+            <label class="col-sm-2 col-form-label"> Пароль : </label>
+            <div class="col-sm-6">
+                <input type="text" name="password" class="form-control" placeholder="Password"/>
+            </div>
+        </div>
 
         <div class="card mb-8 mb-lg-0">
             <div class="card-body p-0">
@@ -59,16 +65,23 @@
                 <img src="/img/<#if user.photo??>${user.photo}<#else>photostandart.png</#if>" alt="osago" class="rounded mx-auto d-block" style="width: 600px;height: 600px;">
             </div>
         </div>
-
-
-
-
         <div class="form-group">
-            <label class="col-sm-2 col-form-label"> Пароль : </label>
+            <label class="col-sm-2 col-form-label"> Изменить фото ОСАГО : </label>
             <div class="col-sm-6">
-                <input type="text" name="password" class="form-control" placeholder="Password"/>
+                <input type="file" name="photoOsago">
             </div>
         </div>
+        <div class="form-group">
+            <label class="col-sm-2 col-form-label"> Изменить фото : </label>
+            <div class="col-sm-6">
+                <input type="file" name="photo">
+            </div>
+        </div>
+
+
+
+
+
         <#list roles as role>
             <div>
                 <label><input type="checkbox" name="${role}" ${user.roles?seq_contains(role)?string("checked", "")}>${role}</label>

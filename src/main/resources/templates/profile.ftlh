@@ -5,8 +5,8 @@
     <script src="https://snipp.ru/cdn/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://snipp.ru/cdn/maskedinput/jquery.maskedinput.min.js"></script>
             <div class="row">
-                <div class="col-lg-4">
-                    <div class="card mb-4">
+                <div class="col-lg-3">
+                    <div class="card mb-3">
                         <div class="card-body text-center">
                             <#if user.photo??>
                             <img src="/img/${user.photo}" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;height: 150px;">
@@ -32,7 +32,7 @@
                         </div>
                     </div>
 
-                    <div class="card mb-4 mb-lg-0">
+                    <div class="card mb-3 mb-lg-0">
                         <div class="card-body p-0">
                             <a class="btn btn-link btn-block text-left" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Полис ОСАГО</a>
                         </div>
@@ -40,9 +40,9 @@
                     <div class="collapse multi-collapse card mb-4 mb-lg-0" id="multiCollapseExample1">
                         <div class="card-body p-0">
                             <#if user.photoOsago??>
-                            <img src="/img/${user.photoOsago}" alt="osago" class="rounded mx-auto d-block" style="width: 350px;height: 350px;">
+                            <img src="/img/${user.photoOsago}" alt="osago" class="rounded mx-auto d-block" style="width: 250px;height: 350px;">
                                 <#else>
-                                    <img src="/img/documentstandart.png" alt="osago" class="rounded mx-auto d-block" style="width: 350px;height: 350px;">
+                                    <img src="/img/documentstandart.png" alt="osago" class="rounded mx-auto d-block" style="width: 250px;height: 350px;">
                             </#if>
                         </div>
                     </div>
@@ -88,8 +88,8 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-15">
-                        <div class="card mb-5">
+                    <div class="col-lg-16">
+                        <div class="card mb-6">
                             <div class="card-body">
                                 <h5 class="my-3">Автомобили</h5>
                                 <div class="row">
@@ -99,11 +99,14 @@
                                     <div class="col-sm-2">
                                         <p class="text-muted mb-0">Номер автомобиля</p>
                                     </div>
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-2">
                                         <p class="text-muted mb-0">VIN номер</p>
                                     </div>
-                                    <div class="col-sm-3">
+                                    <div class="col-sm-2">
                                         <p class="text-muted mb-0">Статус</p>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <p class="text-muted mb-0">Изменить</p>
                                     </div>
                                 </div>
                                 <hr>
@@ -116,20 +119,23 @@
                                             <div class="col-sm-2">
                                                 <p class="text-muted mb-0">${cars.number}</p>
                                             </div>
-                                            <div class="col-sm-4">
+                                            <div class="col-sm-2">
                                                 <p class="text-muted mb-0">${cars.vin}</p>
                                             </div>
                                             <#if cars.active>
-                                            <div class="col-sm-3">
+                                            <div class="col-sm-2">
                                                 <p class="text-success mb-0">Подтвержден</p>
                                             </div>
                                                 <#else>
-                                                    <div class="col-sm-3">
+                                                    <div class="col-sm-2">
                                                         <p class="text-danger mb-0">Проверка</p>
                                                     </div>
                                             </#if>
-                                        </div>
-                                        <hr>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <a href="/profile/car/${cars.id}">Edit</a>
+                                            </div>
+                                         <hr>
                                     </#list>
                                 </#if>
                                 <div class="row">

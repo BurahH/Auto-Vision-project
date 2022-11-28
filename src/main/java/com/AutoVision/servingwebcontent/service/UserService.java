@@ -129,12 +129,35 @@ public class UserService implements UserDetailsService {
         return true;
     }
 
-    public void redactUser(User user, String username, String email, String password, Map<String, String> form, String name, String number){
+    public void redactUser (User user, String username, String email, String password, Map<String, String> form, String name, String number, MultipartFile photo, MultipartFile photoOsago) throws IOException {
         user.setUsername(username);
         user.setEmail(email);
         user.setNumber(number);
         user.setName(name);
-        if((password != null) && (password != ""))
+
+        if(!photo.isEmpty()) {
+            File uploadDir = new File(uploadPath);
+            if (!uploadDir.exists()) {
+                uploadDir.mkdir();
+            }
+            String uuidFile = UUID.randomUUID().toString();
+            String resultFilename = uuidFile + "." + photo.getOriginalFilename();
+            photo.transferTo(new File(uploadPath + "/" + resultFilename));
+            user.setPhoto(resultFilename);
+        }
+
+        if(!photoOsago.isEmpty()) {
+            File uploadDir = new File(uploadPath);
+            if (!uploadDir.exists()) {
+                uploadDir.mkdir();
+            }
+            String uuidFile = UUID.randomUUID().toString();
+            String resultFilename = uuidFile + "." + photoOsago.getOriginalFilename();
+            photoOsago.transferTo(new File(uploadPath + "/" + resultFilename));
+            user.setPhotoOsago(resultFilename);
+        }
+
+        if((!password.equals(null)) && (!password.equals("")))
         {
             user.setPassword(passwordEncoder.encode(password));
         }
@@ -211,5 +234,9 @@ public class UserService implements UserDetailsService {
         else{
             return "Not save";
         }
+    }
+
+    public void getMessage(User user, String message){
+        mailSenderService.send(user.getEmail(), "Отказано в верификации", message);
     }
 }

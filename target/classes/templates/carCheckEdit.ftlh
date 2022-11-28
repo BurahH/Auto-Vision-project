@@ -7,7 +7,7 @@
         <div class="form-group">
             <label class="col-sm-3 col-form-label"> ФИО пользователя : </label>
             <div class="col-sm-6">
-                <p class="text-muted mb-0">${car.user.name}</p>
+                <p class="text-muted mb-0"><#if car.user.name??>${car.user.name}</#if></p>
             </div>
         </div>
         <div class="form-group">
@@ -36,7 +36,7 @@
         </div>
         <div class="collapse multi-collapse card mb-8 mb-lg-0" id="multiCollapseExample1">
             <div class="card-body p-0">
-                <img src="/img/${car.user.photoOsago}" alt="osago" class="rounded mx-auto d-block" style="width: 600px;height: 600px;">
+                <img src="/img/<#if car.user.photoOsago??>${car.user.photoOsago}<#else>documentstandart.png</#if>" alt="osago" class="rounded mx-auto d-block" style="width: 600px;height: 600px;">
             </div>
         </div>
 
@@ -54,6 +54,11 @@
         <input type="hidden" value="${car.id}" name="carId">
         <input type="hidden" name="_csrf" value="${_csrf.token}" />
         <button type="submit" class="btn btn-primary mb-2">Данные верны</button>
+    </form>
+    <form action="/checklist/carlist/${car.id}" method="get">
+        <input type="hidden" value="${car.id}" name="carid">
+        <input type="hidden" name="_csrf" value="${_csrf.token}" />
+        <button type="submit" class="btn btn-primary mb-2">Отказ в верификации</button>
     </form>
     <a class="btn btn-light" href="/checklist/carlist" role="button">Назад</a>
 

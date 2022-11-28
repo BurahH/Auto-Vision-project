@@ -50,6 +50,24 @@ public class User implements UserDetails {
         }
     }
 
+    public boolean checkName(){
+        if(name == null){
+           return false;
+        }
+        else {
+            return true;
+        }
+    }
+
+    public boolean checkNumber(){
+        if(number == null){
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+
     public boolean isAdmin(){
         return roles.contains(Role.ADMIN);
     }
@@ -63,6 +81,16 @@ public class User implements UserDetails {
     }
     public boolean isUser(){
         return roles.contains(Role.USER);
+    }
+
+    public boolean haveNew(String username, String email, String name, String number){
+        if((this.name.equals(name)) && (this.username.equals(username)) && (this.email.equals(email)) && (this.number.equals(number)))
+        {
+            return false;
+        }
+        else {
+            return true;
+        }
     }
 
     public Long getId() {

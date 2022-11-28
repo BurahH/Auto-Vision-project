@@ -10,6 +10,7 @@
         isWatchman = user.isWatchman()
         isFullUser = user.isFullUser()
         isUser = user.isUser()
+        isActive = user.isActive()
     >
 <#else>
     <#assign
@@ -18,5 +19,6 @@
         isWatchman = false
         isFullUser = false
         isUser = false
+        isActive = false
         >
 </#if>

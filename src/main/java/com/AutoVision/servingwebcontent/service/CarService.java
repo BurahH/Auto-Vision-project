@@ -23,8 +23,12 @@ public class CarService {
         return findCar;
     }
 
-
     public List<Car> findAllCar() {
         return carRepos.findAll();
     }
+
+    public Car findById(Long id){
+        return carRepos.getOne(id);
+    }
+
 }
