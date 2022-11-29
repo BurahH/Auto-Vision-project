@@ -187,7 +187,7 @@ public class UserService implements UserDetailsService {
             String message = String.format(
                     "Приветствует Вас в системе Auto Vision \n" +
                             "Пожалуйста перейдите по ссылке ниже, чтобы подтвердить ваш email:\n" +
-                            "http://localhost:8080/activate/%s",
+                            "http://localhost:8080/activate/%s\nДо подтверждения email доступ к аккаунту закрыт",
                     user.getActivationCode()
             );
 
@@ -238,5 +238,21 @@ public class UserService implements UserDetailsService {
 
     public void getMessage(User user, String message){
         mailSenderService.send(user.getEmail(), "Отказано в верификации", message);
+    }
+
+    public String recoveryUser(String email){
+        User user = userRepos.findByEmail(email);
+        if(user == null)
+        {
+            return "Пользователь с таким email не найден";
+        }
+        else{
+            String newPassword = UUID.randomUUID().toString();
+            user.setPassword(passwordEncoder.encode(newPassword));
+            userRepos.save(user);
+            mailSenderService.send(user.getEmail(), "Востановление пароля", "Ваш пароль был сброшен, новый пароль: " + newPassword + "\n Пожалуйста изменить его после входа");
+            return "Письмо с паролем отправлено на почту";
+        }
+
     }
 }

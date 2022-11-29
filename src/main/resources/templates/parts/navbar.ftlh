@@ -24,7 +24,7 @@
             </#if>
             <#if isAdmin>
                 <li class="nav-item active">
-                    <a class="nav-link" href="/">Редактировать цену</a>
+                    <a class="nav-link" href="/parking">Редактировать цену</a>
                 </li>
             </#if>
             <#if isWatchman>

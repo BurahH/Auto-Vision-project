@@ -79,6 +79,7 @@ public class User implements UserDetails {
     public boolean isFullUser(){
         return roles.contains(Role.FULL_USER);
     }
+
     public boolean isUser(){
         return roles.contains(Role.USER);
     }

@@ -9,11 +9,15 @@ public class ParkingPlace {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
 
+    private Long number;
+
     private int price;
+    private int priceBuy;
     private String status;
+
     private Date endTime;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER, optional = true)
     @JoinColumn(name = "user_id")
     private User user;
 
@@ -55,5 +59,31 @@ public class ParkingPlace {
 
     public void setEndTime(Date endTime) {
         this.endTime = endTime;
+    }
+
+    public int getPriceBuy() {
+        return priceBuy;
+    }
+
+    public void setPriceBuy(int priceBuy) {
+        this.priceBuy = priceBuy;
+    }
+
+    public boolean checkHave(){
+        if(status.equals(null)){
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+
+    public Long getNumber() {
+        return number;
+    }
+
+    public void setNumber(Long number) {
+        this.number = number;
     }
 }

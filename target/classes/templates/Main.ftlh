@@ -55,7 +55,7 @@
                         <#list parkingPlace as par>
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <p class="mb-0">${par.id}</p>
+                                    <p class="mb-0">${par.number}</p>
                                 </div>
                                 <div class="col-sm-6">
                                     <#if par.status??>

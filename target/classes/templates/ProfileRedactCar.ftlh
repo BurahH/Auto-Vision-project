@@ -86,7 +86,7 @@
             <input type="hidden" name="_csrf" value="${_csrf.token}" />
             <button type="submit" class="btn btn-primary mb-2" onclick="form_submit()">Сохранить</button>
     </form>
-    <a class="btn btn-light" href="/car" role="button">Назад</a>
+    <a class="btn btn-light" href="/profile" role="button">Назад</a>
 
     <script>
         $.mask.definitions['h'] = '[А-Я]';

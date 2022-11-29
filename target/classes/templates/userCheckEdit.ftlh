@@ -1,7 +1,7 @@
 <#import "parts/common.ftlh" as common>
 
 <@common.page>
-    <h2>Верифиуировать пользователя</h2>
+    <h2>Верифицировать пользователя</h2>
 
     <form action="/checklist" method="post">
         <div class="form-group">

@@ -90,4 +90,24 @@ public class RegistrationController {
 
         return "login";
     }
+
+    @GetMapping("/recovery")
+    public String getRecovery(Model model){
+        model.addAttribute("message", null);
+        return "recovery";
+    }
+
+    @PostMapping("/recovery")
+    public String recovery(Model model, @RequestParam String email){
+        String message = userService.recoveryUser(email);
+        if(message == "Пользователь с таким email не найден") {
+            model.addAttribute("classInscription", "alert alert-danger");
+            model.addAttribute("message", message);
+        }
+        else{
+            model.addAttribute("classInscription", "alert alert-success");
+            model.addAttribute("message", message);
+        }
+        return "recovery";
+    }
 }
