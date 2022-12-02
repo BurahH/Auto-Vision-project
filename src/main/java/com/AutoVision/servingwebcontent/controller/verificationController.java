@@ -128,7 +128,7 @@ public class verificationController {
     public String carGetActive(@RequestParam("carId") Long id, Model model){
         Car car = carRepos.getOne(id);
         car.setActive(true);
-        carRepos.save(car);                       //TODO Добавление в базу номеров
+        carRepos.save(car);
 
         model.addAttribute("car", car);
         return "redirect:/checklist/carlist";

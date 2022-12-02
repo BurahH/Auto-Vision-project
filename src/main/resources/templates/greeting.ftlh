@@ -1,4 +1,4 @@
-<#import "parts/common.ftlh" as common>
+<#import "parts/commonNew.ftlh" as common>
 
 <@common.page>
 <h5>Приветствуем на сайте системы Auto Vision</h5>

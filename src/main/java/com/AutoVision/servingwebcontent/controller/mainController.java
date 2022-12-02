@@ -70,7 +70,7 @@ public class mainController {
                 }
             }
             model.addAttribute("story", story);
-            return "main";
+            return "Main";
         }
         else if(user.isWatchman())
         {

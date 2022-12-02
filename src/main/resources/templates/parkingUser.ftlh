@@ -1,3 +1,4 @@
+
 <#import "parts/commonNew.ftlh" as common>
 
 <@common.page>
@@ -23,7 +24,7 @@
         <div class="wr">Въезд/выезд</div>
         <div class="plc">
             <#list parking as par>
-                <a class="plc${par.number}" href="/parking/${par.number}">${par.number}</a>
+                <a class="plc${par.number}" href="/view/${par.number}">${par.number}</a>
             </#list>
         </div>
     </div>
@@ -52,4 +53,4 @@
             </div> 
         </div>
     </div>
-    </@common.page>
+</@common.page>

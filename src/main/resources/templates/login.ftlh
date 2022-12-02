@@ -1,4 +1,4 @@
-<#import "parts/common.ftlh" as common>
+<#import "parts/commonNew.ftlh" as common>
 <#import "parts/login.ftlh" as login>
 
 <@common.page>

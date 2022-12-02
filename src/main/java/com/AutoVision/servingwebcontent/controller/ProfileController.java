@@ -47,7 +47,7 @@ public class ProfileController {
     private String uploadPath;
 
     @GetMapping("profile")
-    public String getProfile(Model model, @AuthenticationPrincipal User user){   //TODO Реализовать удаление автомобилей
+    public String getProfile(Model model, @AuthenticationPrincipal User user){
         model.addAttribute("user", user);
         model.addAttribute("message", null);
 

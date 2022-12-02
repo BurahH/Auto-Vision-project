@@ -1,5 +1,5 @@
 <#include "parts/securuty.ftlh">
-<#import "parts/common.ftlh" as common>
+<#import "parts/commonNew.ftlh" as common>
 
 <@common.page>
     <script src="https://snipp.ru/cdn/jquery/2.1.1/jquery.min.js"></script>

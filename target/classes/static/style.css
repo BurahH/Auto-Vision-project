@@ -140,6 +140,240 @@ body {
     color: #FF7A00;
     }
 
+.menu_item1-2 {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px 4px;
+
+    position: absolute;
+    width: 150px;
+    height: 23px;
+    left: 284px;
+    top: 18px;
+
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+
+    color: #000000;
+    text-decoration: none;
+    transition: color 0.3s linear;
+}
+.menu_item1-2:hover {
+    color: #FF7A00;
+}
+
+.menu_item2-2  {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px 4px;
+
+    position: absolute;
+    width: 111px;
+    height: 23px;
+    left: 435px;
+    top: 18px;
+
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+
+    color: #000000;
+    text-decoration: none;
+    transition: color 0.3s linear;
+}
+.menu_item2-2:hover {
+    color: #FF7A00;
+}
+
+.menu_item3-2 {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 3px 10px;
+
+    position: absolute;
+    width: 134px;
+    height: 29px;
+    left: 565px;
+    top: 15px;
+
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+
+    color: #000000;
+    text-decoration: none;
+    transition: color 0.3s linear;
+}
+.menu_item3-2:hover {
+    color: #FF7A00;
+}
+
+.menu_item1-3 {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px 4px;
+
+    position: absolute;
+    width: 150px;
+    height: 23px;
+    left: 284px;
+    top: 20px;
+
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+
+    color: #000000;
+    text-decoration: none;
+    transition: color 0.3s linear;
+}
+.menu_item1-3:hover {
+    color: #FF7A00;
+}
+
+.menu_item2-3  {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px 4px;
+
+    position: absolute;
+    width: 111px;
+    height: 23px;
+    left: 380px;
+    top: 17px;
+
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+
+    color: #000000;
+    text-decoration: none;
+    transition: color 0.3s linear;
+}
+.menu_item2-3:hover {
+    color: #FF7A00;
+}
+
+.menu_item3-3 {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 3px 10px;
+
+    position: absolute;
+    width: 134px;
+    height: 29px;
+    left: 530px;
+    top: 15px;
+
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+
+    color: #000000;
+    text-decoration: none;
+    transition: color 0.3s linear;
+}
+.menu_item3-3:hover {
+    color: #FF7A00;
+}
+
+.menu_item1-4 {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px 4px;
+
+    position: absolute;
+    width: 150px;
+    height: 23px;
+    left: 284px;
+    top: 20px;
+
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+
+    color: #000000;
+    text-decoration: none;
+    transition: color 0.3s linear;
+}
+.menu_item1-4:hover {
+    color: #FF7A00;
+}
+
+.menu_item2-4  {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px 4px;
+
+    position: absolute;
+    width: 130px;
+    height: 23px;
+    left: 400px;
+    top: 17px;
+
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+
+    color: #000000;
+    text-decoration: none;
+    transition: color 0.3s linear;
+}
+.menu_item2-4:hover {
+    color: #FF7A00;
+}
+
+.menu_item3-4 {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 3px 10px;
+
+    position: absolute;
+    width: 134px;
+    height: 29px;
+    left: 530px;
+    top: 15px;
+
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+
+    color: #000000;
+    text-decoration: none;
+    transition: color 0.3s linear;
+}
+.menu_item3-4:hover {
+    color: #FF7A00;
+}
+
 /* Телефон */
 .phone_img {
     position: absolute;
@@ -170,8 +404,8 @@ body {
     position: absolute;
     width: 20px;
     height: 20px;
-    left: 1885px;
-    top: 15px;
+    left: 1860px;
+    top: 10px;
 }
 
 

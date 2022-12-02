@@ -34,6 +34,13 @@ public class parkingController {
     @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping
     public String getParking(Model model){
+        if(parkingPlaceRepos.findAll().size() != 76) {
+            for (Long i = 1L; i <= 76L; i++) {
+                if (parkingPlaceRepos.findByNumber(i) == null) {
+                    parkingService.addNewParking(i);
+                }
+            }
+        }
         Iterable<ParkingPlace> parkingPlace = parkingPlaceRepos.findAll();
         model.addAttribute("parking", parkingPlace);
         return "parking";
@@ -49,13 +56,6 @@ public class parkingController {
         }
         Long id = Long.parseLong (parking);
         ParkingPlace parkingPlace = parkingPlaceRepos.findByNumber(id);
-        if(parkingPlaceRepos.findByNumber(id) == null)
-        {
-            parkingService.addNewParking(id);
-            ParkingPlace newParkingPlace = parkingPlaceRepos.findByNumber(id);
-            model.addAttribute("parking", newParkingPlace);
-            return "parkingEdit";
-        }
         model.addAttribute("parking", parkingPlace);
         return "parkingEdit";
     }

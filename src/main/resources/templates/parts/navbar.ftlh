@@ -44,7 +44,7 @@
             </#if>
             <#if isUser>
                 <li class="nav-item active">
-                    <a class="nav-link" href="/">Парковка</a>
+                    <a class="nav-link" href="/view">Парковка</a>
                 </li>
             </#if>
         </ul>
