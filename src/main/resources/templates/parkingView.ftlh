@@ -11,8 +11,18 @@
 </#if>
     <script src="https://snipp.ru/cdn/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://snipp.ru/cdn/maskedinput/jquery.maskedinput.min.js"></script>
+    <script>
+        function buy() {
+            const dateBuy = document.getElementById('dateBuy').value;
+            if (dateBuy == "") {
+                document.getElementById('priceBuy').innerHTML = Number(#{parking.priceBuy});
+            } else {
+                document.getElementById('priceBuy').innerHTML = Number(dateBuy) * Number(#{parking.price});
+            }
+        }
+    </script>
 <h2>Купить парковочное место</h2>
-
+    <form method="post" action="/view">
     <div class="form-group">
         <label class="col-sm-3 col-form-label"> Номер места : </label>
         <div class="col-sm-6">
@@ -20,16 +30,33 @@
         </div>
     </div>
     <div class="form-group">
-        <label class="col-sm-3 col-form-label"> Номер места : </label>
+        <label class="col-sm-3 col-form-label"> Цена аренды за 1 месяц : </label>
         <div class="col-sm-6">
-            <p class="text-muted mb-0">${parking.price}</p>
+            <p class="text-muted mb-0" id="priceOne">${parking.price}</p>
         </div>
     </div>
     <div class="form-group">
-        <label class="col-sm-3 col-form-label"> Номер места : </label>
+        <label class="col-sm-3 col-form-label"> Цена за покупку места : </label>
         <div class="col-sm-6">
-            <p class="text-muted mb-0">${parking.priceBuy}</p>
+            <p class="text-muted mb-0" id="priceBuyFull">${parking.priceBuy}</p>
         </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 col-form-label"> Срок аренды в месяцах (Для покупки оставте пустым): </label>
+        <div class="col-sm-6">
+            <input type="number" name="priceBuy" class="form-control" value="" placeholder="Срок" id="dateBuy" required/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 col-form-label"> Цена покупки : </label>
+        <div class="col-sm-6">
+            <p class="text-muted mb-0" id="priceBuy"> </p>
+        </div>
+    </div>
+    <div>
+        <button type="button" class="btn btn-primary" onclick="buy()">
+            Расчитать цену
+        </button>
     </div>
     <div>
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal">
@@ -46,7 +73,6 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form method="post" action="/parking/view">
                 <div class="modal-body">
                     Пожалуйста заполните реквизиты карты для покупки
                     <div class="form-group">
@@ -75,13 +101,15 @@
                     </div>
                 </div>
                 <div class="modal-footer">
+                    <input type="hidden" name="parkingPlaceId" value="${parking.id}" />
+                    <input type="hidden" name="_csrf" value="${_csrf.token}" />
                     <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="resetLogin()">Отмена</button>
                     <button type="submit" class="btn btn-primary" name="delete">Купить</button>
                 </div>
-                </form>
             </div>
         </div>
     </div>
+    </form>
 
     <script>
         $('.mask-number').mask('9999-9999-9999-9999');
@@ -96,5 +124,5 @@
             document.getElementById("editUser").submit();
         }
     </script>
-<a class="btn btn-light" href="/parking" role="button">Назад</a>
+<a class="btn btn-light" href="/view" role="button">Назад</a>
 </@common.page>

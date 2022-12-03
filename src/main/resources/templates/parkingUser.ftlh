@@ -24,7 +24,8 @@
         <div class="wr">Въезд/выезд</div>
         <div class="plc">
             <#list parking as par>
-                <a class="plc${par.number}" href="/view/${par.number}">${par.number}</a>
+                <a class="plc${par.number}" href="/view/${par.number}" data-bs-toggle="tooltip" data-html="true" title="Цена аренды: ${par.price}
+Цена покупки: ${par.priceBuy}">${par.number}</a>
             </#list>
         </div>
     </div>

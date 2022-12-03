@@ -1,10 +1,8 @@
 package com.AutoVision.servingwebcontent.controller;
 
-import com.AutoVision.servingwebcontent.domain.Car;
-import com.AutoVision.servingwebcontent.domain.Role;
-import com.AutoVision.servingwebcontent.domain.Story;
-import com.AutoVision.servingwebcontent.domain.User;
+import com.AutoVision.servingwebcontent.domain.*;
 import com.AutoVision.servingwebcontent.repos.CarRepos;
+import com.AutoVision.servingwebcontent.repos.ParkingPlaceRepos;
 import com.AutoVision.servingwebcontent.repos.StoryRepos;
 import com.AutoVision.servingwebcontent.repos.UserRepos;
 import com.AutoVision.servingwebcontent.service.UserService;
@@ -31,6 +29,9 @@ public class UserController {
 
     @Autowired
     private StoryRepos storyRepos;
+
+    @Autowired
+    private ParkingPlaceRepos parkingPlaceRepos;
 
     @Autowired
     private UserService userService;
@@ -79,6 +80,10 @@ public class UserController {
             for(Car car : cars) {
                 List<Story> stories = storyRepos.findByCarId(car.getId());
                 storyRepos.deleteAll(stories);
+            }
+            List<ParkingPlace> parking = parkingPlaceRepos.findByUserId(user.getId());
+            for(ParkingPlace parkingPlace : parking) {
+                parkingPlace.setUser(null);
             }
             carRepos.deleteAll(cars);
             userRepos.deleteById(user.getId());

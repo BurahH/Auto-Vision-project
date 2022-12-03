@@ -77,7 +77,7 @@ public class mainController {
             return "camera";
         }
         else {
-            return "greeting";
+          return "redirect:/parking";
         }
 
     }
