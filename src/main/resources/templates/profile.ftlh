@@ -173,7 +173,7 @@
                             </div>
                             <label class="col-sm-2 col-form-label"> Номер (Большими буквами): </label>
                             <div class="col-sm-6">
-                                <input type="text" name="number" class="mask-car form-control text-uppercase" placeholder="A000AA" required/>
+                                <input type="text" name="number" class="mask-car form-control text-uppercase" placeholder="A000AA102" required/>
                                 <div class="invalid-feedback">
                                     Поле номер не может быть пустым
                                 </div>
@@ -207,7 +207,7 @@
     </div>
     <script>
         $.mask.definitions['h'] = '[А-Я]';
-        $('.mask-car').mask('h999hh');
+        $('.mask-car').mask('h999hh99?9');
     </script>
     <script>
     function form_submit(){

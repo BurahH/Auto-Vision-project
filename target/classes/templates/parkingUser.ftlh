@@ -42,7 +42,7 @@
             <div class="des">Обозначения</div>
             <div class="free">Место свободно</div>
             <div class="sold">Место продано</div>
-            <div class="reserved">Место забронировано</div>
+            <div class="reserved">Место арендовано</div>
             <div class="pts1">
                 <img src="img/image/ec1.png" alt="">
             </div>    

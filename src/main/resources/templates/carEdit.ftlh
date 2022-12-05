@@ -9,6 +9,8 @@
             </button>
         </div>
     </#if>
+    <script src="https://snipp.ru/cdn/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://snipp.ru/cdn/maskedinput/jquery.maskedinput.min.js"></script>
     <h2>Редактировать автомобиль</h2>
 
     <form action="/car" method="post" id="editUser" enctype="multipart/form-data">
@@ -33,7 +35,7 @@
         <div class="form-group">
             <label class="col-sm-3 col-form-label"> Номер автомобиля : </label>
             <div class="col-sm-6">
-                <input type="text" name="number" class="form-control" value="${car.number}"/>
+                <input type="text" name="number" class="mask-car form-control" value="${car.number}"/>
             </div>
         </div>
         <div class="form-group">
@@ -69,6 +71,7 @@
             <div class="col-sm-6">
                 <input type="file" name="sts">
             </div>
+        </div>
 
         <div>
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal">
@@ -90,7 +93,7 @@
                         <div class="form-group">
                             <label class="col-sm-2 col-form-label"> Номер: </label>
                             <div class="col-sm-6">
-                                <input type="text" name="numberCar" class="form-control" placeholder="Номер" id="Login" required/>
+                                <input type="text" name="numberCar" class="mask-car form-control" placeholder="Номер" id="Login" required/>
                             </div>
                         </div>
                     </div>
@@ -108,6 +111,10 @@
     </form>
     <a class="btn btn-light" href="/car" role="button">Назад</a>
 
+    <script>
+        $.mask.definitions['h'] = '[А-Я]';
+        $('.mask-car').mask('h999hh99?9');
+    </script>
     <script>
         function resetLogin(){
             document.getElementById("Login").value = "";

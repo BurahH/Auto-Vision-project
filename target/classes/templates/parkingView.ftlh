@@ -42,9 +42,9 @@
         </div>
     </div>
     <div class="form-group">
-        <label class="col-sm-3 col-form-label"> Срок аренды в месяцах (Для покупки оставте пустым): </label>
+        <label class="col-sm-3 col-form-label"> Срок аренды в месяцах (Для покупки укажите 0): </label>
         <div class="col-sm-6">
-            <input type="number" name="priceBuy" class="form-control" value="" placeholder="Срок" id="dateBuy" required/>
+            <input type="number" name="priceBuy" class="form-control" value="0" placeholder="Срок" id="dateBuy" required/>
         </div>
     </div>
     <div class="form-group">

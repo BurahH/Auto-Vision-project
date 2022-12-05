@@ -10,9 +10,9 @@
 
             <#if isUser>
             <div class="menu">
-                <a class="menu_item1" href="/view">Паркинг</a>
-                <a class="menu_item2" href="/">Как купить</a>
-                <a class="menu_item3" href="/">О компании</a>
+                <a class="menu_item1" href="/">Главная</a>
+                <a class="menu_item2" href="/view">Парковка</a>
+                <a class="menu_item3" href="/">Как купить</a>
                 <a class="menu_item4" href="/">Контакты</a>
             </div>
             </#if>
@@ -27,9 +27,9 @@
 
             <#if isWatchman>
                 <div class="menu">
-                    <a class="menu_item1-3" href="/view">Камеры</a>
-                    <a class="menu_item2-3" href="/">Верификация пользователей</a>
-                    <a class="menu_item3-3" href="/">Верификация автомобилей</a>
+                    <a class="menu_item1-3" href="/">Камеры</a>
+                    <a class="menu_item2-3" href="/checklist">Верификация пользователей</a>
+                    <a class="menu_item3-3" href="/checklist/carlist">Верификация автомобилей</a>
                 </div>
             </#if>
 
@@ -37,7 +37,6 @@
                 <div class="menu">
                     <a class="menu_item1-4" href="/">Как купить</a>
                     <a class="menu_item2-4" href="/">О компании</a>
-                    <a class="menu_item3-4" href="/">Контакты</a>
                 </div>
             </#if>
 

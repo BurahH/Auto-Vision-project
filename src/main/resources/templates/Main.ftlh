@@ -58,7 +58,7 @@
                                     <p class="mb-0">${par.number}</p>
                                 </div>
                                 <div class="col-sm-6">
-                                    <#if par.status == "Куплено">
+                                    <#if par.status == "Куплен">
                                         <p class="mb-0">Куплено</p>
                                     <#else>
                                         <p class="mb-0">${par.endTime}</p>

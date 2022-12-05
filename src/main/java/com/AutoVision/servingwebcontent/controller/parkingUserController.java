@@ -65,7 +65,7 @@ public class parkingUserController {
     @PostMapping("/view")
     public String buyParking(Model model,
                              @AuthenticationPrincipal User user,
-                             @RequestParam int priceBuy,
+                             @RequestParam(required = false) int priceBuy,
                              @RequestParam Long parkingPlaceId){
         //if(user.getActivationCode() != null){
         //    model.addAttribute("message", "Пожалуйста подтвердите почту для покупки места")

@@ -1,0 +1,472 @@
+body {
+    margin: 0;
+}
+
+
+.container {
+    margin: 0px 166px;
+}
+
+/* Панель навигации */
+
+.header_line {
+    padding-top: 15px;
+    display: flex;
+    align-items: center
+}
+
+.header_logo {
+    position: absolute;
+    width: 115px;
+    height: 26px;
+    left: 120px;
+    top: 18px;
+}
+
+.menu_item1 {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px 4px;
+
+    position: absolute;
+    width: 100px;
+    height: 23px;
+    left: 284px;
+    top: 18px;
+
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+
+    color: #000000;
+    text-decoration: none;
+    transition: color 0.3s linear;
+    }
+.menu_item1:hover {
+    color: #FF7A00;
+    }
+
+.menu_item2  {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px 4px;
+
+    position: absolute;
+    width: 111px;
+    height: 23px;
+    left: 404px;
+    top: 18px;
+
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+
+    color: #000000;
+    text-decoration: none;
+    transition: color 0.3s linear;
+}
+.menu_item2:hover {
+    color: #FF7A00;
+    }
+
+.menu_item3 {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 3px 10px;
+
+    position: absolute;
+    width: 134px;
+    height: 29px;
+    left: 535px;
+    top: 15px;
+
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+
+    color: #000000;
+    text-decoration: none;
+    transition: color 0.3s linear;
+}
+.menu_item3:hover {
+    color: #FF7A00;
+    }
+
+.menu_item4 {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px 4px;
+
+    position: absolute;
+    width: 98px;
+    height: 23px;
+    left: 689px;
+    top: 18px;
+
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+
+    color: #000000;
+    text-decoration: none;
+    transition: color 0.3s linear;
+}
+.menu_item4:hover {
+    color: #FF7A00;
+    }
+
+/* Телефон */
+.phone_img {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: 1661px;
+    top: 17px;
+    }
+
+.number {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px 4px;
+
+    position: absolute;
+    width: 163px;
+    height: 24px;
+    left: 1691px;
+    top: 15px;
+    
+    border-right: 1px solid #000000;
+}
+
+
+/* Навигация */
+
+.nav_item1 {
+    position: absolute;
+    width: 85px;
+    height: 23px;
+    left: 840px;
+    top: 100px;
+
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+
+    color: #000000;
+}
+
+.nav_item2 {
+    position: absolute;
+    width: 19.8px;
+    height: 19.8px;
+    left: 931px;
+    top: 103px;
+}
+
+.nav_item3 {
+    position: absolute;
+    width: 92px;
+    height: 23px;
+    left: 957px;
+    top: 100px;
+
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+    
+    color: #FF7A00;
+}
+
+
+/* Заголовок */
+
+.title {
+    position: absolute;
+    width: 101px;
+    height: 52px;
+    left: 910px;
+    top: 256px;
+
+    font-family: 'Playfair Display';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 130%;
+
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.1em;
+
+    color: #000000;
+}
+
+
+/* Вход */
+
+
+.login-txt {
+    position: absolute;
+    width: 59px;
+    height: 23px;
+    left: 710px;
+    top: 398px;
+
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+
+    color: #000000;
+}
+
+.password-txt {
+    position: absolute;
+    width: 71px;
+    height: 23px;
+    left: 710px;
+    top: 491px;
+
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+
+    color: #000000;
+}
+
+.form-field1-input {
+box-sizing: border-box;
+
+position: absolute;
+width: 500px;
+height: 40px;
+left: 710px;
+top: 431px;
+
+color: #000000;
+background-color: #D9D9D9;   
+border: 1px solid #000000;
+border-radius: 5px;
+    
+font-family: 'Montserrat';
+font-size: 18px;
+font-weight: 400;
+
+}
+
+.invalid-1 {
+    position: absolute;
+    width: 500px;
+    height: 40px;
+    left: 710px;
+    top: 465px;
+}
+
+.invalid-2 {
+    position: absolute;
+    width: 500px;
+    height: 40px;
+    left: 710px;
+    top: 558px;
+}
+
+.form-field2-input {
+box-sizing: border-box;
+
+position: absolute;
+width: 500px;
+height: 40px;
+left: 710px;
+top: 524px;
+
+color: #000000;
+background-color: #D9D9D9;
+border: 1px solid #000000;
+border-radius: 5px;
+
+font-family: 'Montserrat';
+font-size: 18px;
+font-weight: 400;
+
+}
+
+
+/* Чек-бокс */
+
+label {
+display: block;
+position: absolute;
+box-sizing: border-box;    
+padding-left:30px; 
+cursor: pointer;
+left: 710px;
+top: 585px;
+width: 400px;
+height: 23px;
+
+font-family: 'Raleway';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 23px;
+}
+label input[type=checkbox] {
+  position: absolute; 
+  opacity: 0;
+  width:0; 
+  height:0;
+}
+label span {
+  position: absolute;
+  top:0;
+  left:0;
+  width:20px; 
+  height:20px;
+  background-color: #ddd;
+  transition: .3s background-color;
+}
+
+label span:after {
+  content: "";
+  position: absolute;
+  display: none;
+  
+  left: 6px;
+  top: 2px;
+  width: 4px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+}
+label:hover span {
+  background-color: #ccc;
+}
+
+label input:checked ~ span {
+  background-color: #FF7A00;
+}
+label input:checked ~ span:after {
+  display:block;
+}
+
+
+
+/* Кнопка */
+
+.btn1 {
+
+box-sizing: border-box;
+text-decoration: none;
+padding: 21px 192px;
+
+position: absolute;
+width: 500px;
+height: 80px;
+left: 710px;
+top: 645px;
+
+background-color: #393939;
+border: 1px solid #393939;
+border-radius: 10px;
+    
+font-family: 'Raleway';
+font-style: normal;
+font-weight: 700;
+font-size: 32px;
+line-height: 38px;
+
+color: #FF7A00;
+box-shadow:0 0 10px rgba(0,0,0,0.5);
+}
+
+.btn:hover {
+box-shadow:0 0 10px rgba(0,0,0,0.8);
+color: #ffffff;
+transition: color 0.3s linear;
+}
+
+.strip {
+position: absolute;
+width: 850px;
+height: 1px;
+left: 535px;
+top: 775px;
+
+background: #000000;
+}
+
+/* Восстановление */
+
+.frgt {
+text-decoration: none;
+position: absolute;
+width: 210px;
+height: 23px;
+left: 852px;
+top: 826px;
+
+font-family: 'Raleway';
+font-style: normal;
+font-weight: 600;
+font-size: 20px;
+line-height: 23px;
+
+color: #FF7A00;
+}
+
+/* Регистрация */
+
+.registration {
+text-decoration: none;
+position: absolute;
+width: 203px;
+height: 23px;
+left: 856px;
+top: 932px;
+
+font-family: 'Raleway';
+font-style: normal;
+font-weight: 600;
+font-size: 20px;
+line-height: 23px;
+
+color: #FF7A00;
+}
+
+.first
+{
+position: absolute;
+width: 800px;
+height: 23px;
+left: 588px;
+top: 899px;
+
+font-family: 'Raleway';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 23px;
+
+color: #000000;
+}
+
