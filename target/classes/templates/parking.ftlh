@@ -23,8 +23,10 @@
         <div class="wr">Въезд/выезд</div>
         <div class="plc">
             <#list parking as par>
-                <a class="plc${par.number}" href="/parking/${par.number}" data-bs-toggle="tooltip" data-html="true" title="Цена аренды: ${par.price}
-Цена покупки: ${par.priceBuy}">${par.number}</a>
+                <a class="plc${par.number}<#if par.status = "Куплен">-2</#if><#if par.status = "Арендован">-3</#if>" href="/parking/${par.number}" data-bs-toggle="tooltip" data-html="true" title="Цена аренды: ${par.price}
+Цена покупки: ${par.priceBuy}<#if par.status = "Арендован">
+Дата окончания аренды: ${par.endTime}
+</#if>">${par.number}</a>
             </#list>
         </div>
     </div>
@@ -33,9 +35,9 @@
         <div class="brn"></div>
         <div class="info_card">
             <div class="floor">1 этаж</div>
-            <div class="min_price">Минимальная стоимость: 2.500.000 тыс руб.</div>
+            <div class="min_price">Минимальная стоимость: ${min}</div>
             <div class="type">Тип: наземный</div>
-            <div class="free_plc">Количество свободных  мест: 76</div>
+            <div class="free_plc">Количество свободных  мест: ${kolvo}</div>
         </div>
         <div class="des_card">
             <div class="des">Обозначения</div>

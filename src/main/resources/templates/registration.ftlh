@@ -2,7 +2,7 @@
 <#import "parts/login.ftlh" as login>
 
 <@common.page>
-    <h2>Регистрация</h2>
+    <h2 class="reg">Регистрация</h2>
     <#if message??>
     <div class="alert alert-danger" role="alert">
         ${message}

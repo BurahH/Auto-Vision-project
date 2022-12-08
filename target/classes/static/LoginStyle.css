@@ -1,5 +1,5 @@
 body {
-    margin: 0;
+    margin: auto;
 }
 
 
@@ -237,6 +237,13 @@ body {
     color: #000000;
 }
 
+.login-txt2 {
+    font-family: 'Raleway';
+    font-style: normal;
+
+    color: #000000;
+}
+
 .password-txt {
     position: absolute;
     width: 71px;
@@ -397,6 +404,26 @@ line-height: 38px;
 
 color: #FF7A00;
 box-shadow:0 0 10px rgba(0,0,0,0.5);
+}
+
+.btn2 {
+
+    box-sizing: border-box;
+    text-decoration: none;
+    padding: 21px 192px;
+
+    background-color: #393939;
+    border: 1px solid #393939;
+    border-radius: 10px;
+
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 38px;
+
+    color: #FF7A00;
+    box-shadow:0 0 10px rgba(0,0,0,0.5);
 }
 
 .btn:hover {

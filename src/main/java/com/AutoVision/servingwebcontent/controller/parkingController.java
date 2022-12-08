@@ -42,6 +42,19 @@ public class parkingController {
             }
         }
         Iterable<ParkingPlace> parkingPlace = parkingPlaceRepos.findAll();
+        int i = 0;
+        int min = 32000000;
+        for(ParkingPlace parking : parkingPlace)
+        {
+            if(parking.getStatus().equals("Открыт")){
+                i++;
+            }
+            if(parking.getPriceBuy() < min){
+                min = parking.getPriceBuy();
+            }
+        }
+        model.addAttribute("min", min);
+        model.addAttribute("kolvo", i);
         model.addAttribute("parking", parkingPlace);
         return "parking";
     }
@@ -78,7 +91,7 @@ public class parkingController {
         parkingPlace.setPrice(price);
         parkingPlaceRepos.save(parkingPlace);
         model.addAttribute("classInscription", "alert alert-success");
-        model.addAttribute("message", "Пользователь успешно изменен");
+        model.addAttribute("message", "Парковочное место успешно изменен");
         model.addAttribute("parking", parkingPlace);
         return "parkingEdit";
     }

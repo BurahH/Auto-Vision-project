@@ -1,14 +1,13 @@
 package com.AutoVision.servingwebcontent.controller;
 
+import com.AutoVision.servingwebcontent.domain.Card;
 import com.AutoVision.servingwebcontent.domain.ParkingPlace;
 import com.AutoVision.servingwebcontent.domain.User;
-import com.AutoVision.servingwebcontent.repos.CarRepos;
-import com.AutoVision.servingwebcontent.repos.ParkingPlaceRepos;
-import com.AutoVision.servingwebcontent.repos.StoryRepos;
-import com.AutoVision.servingwebcontent.repos.UserRepos;
+import com.AutoVision.servingwebcontent.repos.*;
 import com.AutoVision.servingwebcontent.service.ParkingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,10 +22,13 @@ import java.util.GregorianCalendar;
 @Controller
 public class parkingUserController {
     @Autowired
-    private UserRepos userRepos;
+    private CardRepos cardRepos;
 
     @Autowired
     private ParkingPlaceRepos parkingPlaceRepos;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Autowired
     private CarRepos carRepos;
@@ -40,6 +42,19 @@ public class parkingUserController {
     @GetMapping("/view")
     public String parking(Model model){
         Iterable<ParkingPlace> parkingPlace = parkingPlaceRepos.findAll();
+        int i = 0;
+        int min = 32000000;
+        for(ParkingPlace parking : parkingPlace)
+        {
+            if(parking.getStatus().equals("Открыт")){
+                i++;
+            }
+            if(parking.getPriceBuy() < min){
+                min = parking.getPriceBuy();
+            }
+        }
+        model.addAttribute("min", min);
+        model.addAttribute("kolvo", i);
         model.addAttribute("parking", parkingPlace);
         return "parkingUser";
     }
@@ -66,11 +81,56 @@ public class parkingUserController {
     public String buyParking(Model model,
                              @AuthenticationPrincipal User user,
                              @RequestParam(required = false) int priceBuy,
-                             @RequestParam Long parkingPlaceId){
-        //if(user.getActivationCode() != null){
-        //    model.addAttribute("message", "Пожалуйста подтвердите почту для покупки места")
-       // }
+                             @RequestParam Long parkingPlaceId,
+                             @RequestParam String number,
+                             @RequestParam String srok,
+                             @RequestParam String name,
+                             @RequestParam String cvc){
         ParkingPlace parkingPlace = parkingPlaceRepos.getOne(parkingPlaceId);
+        if(user.getActivationCode() != null){
+            model.addAttribute("message", "Пожалуйста подтвердите почту для покупки места");
+            model.addAttribute("parking", parkingPlace);
+            return "parkingView";
+        }
+        if(!user.isFullUser()){
+            model.addAttribute("message", "Пожалуйста пройдите верификацию для покупки места");
+            model.addAttribute("parking", parkingPlace);
+            return "parkingView";
+        }
+        Card card = cardRepos.findByNumber(number);
+        if((card.getCvc().equals(passwordEncoder.encode(cvc))) && (card.getDate().equals(srok)) && (card.getName().equals(name))){
+            Long money = card.getMoney();
+            if(priceBuy == 0)
+            {
+                if(parkingPlace.getPriceBuy() > money){
+                    model.addAttribute("message", "На карте недостаточно средств");
+                    model.addAttribute("parking", parkingPlace);
+                    return "parkingView";
+                }
+                else{
+                    money = money - parkingPlace.getPriceBuy();
+                    card.setMoney(money);
+                    cardRepos.save(card);
+                }
+            }
+            else{
+                if(parkingPlace.getPrice()*priceBuy > money){
+                    model.addAttribute("message", "На карте недостаточно средств");
+                    model.addAttribute("parking", parkingPlace);
+                    return "parkingView";
+                }
+                else{
+                    money = money - parkingPlace.getPrice()*priceBuy;
+                    card.setMoney(money);
+                    cardRepos.save(card);
+                }
+            }
+        }
+        else{
+            model.addAttribute("message", "Неверная карта");
+            model.addAttribute("parking", parkingPlace);
+            return "parkingView";
+        }
         if(parkingPlace.getStatus().equals("Открыт")) {
             if(priceBuy == 0)
             {
