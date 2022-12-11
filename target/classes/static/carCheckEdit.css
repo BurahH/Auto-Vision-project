@@ -47,7 +47,7 @@
 }
 
 .col-sm-52 {    
-    width: 130px;
+    width: 122px;
     color: #000000;
     font-family: 'Raleway';
     font-style: normal;
@@ -59,16 +59,27 @@
     margin-right: 20px;
 }
 
-.col-sm-53 {    
-    opacity: 0.5;
-    width: 130px;
+.col-sm-53 {
+    width: 122px;
 
     color: #000000;
 
     font-family: 'Montserrat';
-    font-size: 18px;
+    font-size: 15px;
     font-weight: 400;
     
+    margin-bottom: 10px;
+    margin-right: 20px;
+}
+.col-sm-533 {
+    width: 122px;
+
+    color: #000000;
+
+    font-family: 'Montserrat';
+    font-size: 15px;
+    font-weight: 400;
+
     margin-bottom: 10px;
     margin-right: 20px;
 }
@@ -118,10 +129,6 @@
     font-style: normal;
     font-weight: 400;
     font-size: 20px;
-    
-    margin-bottom: 10px;
-    justify-content: flex-end;
-    width: 215px;
 }
 
 .col-sm-62 {
@@ -132,35 +139,15 @@
     font-family: 'Montserrat';
     font-size: 18px;
     font-weight: 400;
-    
-    margin-left: 15px;
-    margin-bottom: 10px;
 }
 
 .col-sm-621 {
-    opacity: 80%;
 
     color: #000000;
 
     font-family: 'Montserrat';
     font-size: 18px;
     font-weight: 400;
-    
-    margin-bottom: 10px;
-    justify-content: flex-end;
-}
-
-.col-sm-62 {
-    opacity: 80%;
-
-    color: #000000;
-
-    font-family: 'Montserrat';
-    font-size: 18px;
-    font-weight: 400;
-    
-    margin-bottom: 10px;
-    justify-content: flex-end;
 }
 
 .form-control22 {
@@ -262,8 +249,26 @@
     color: #FFFFFF;
     transition: color 0.3s linear;
 }
+.btnsp2  {
+    box-sizing: border-box;
+    padding: 8px 8px 8px 8px;
+    height: 35px;
+    width: 255px;
 
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
 
+    color: #393939;
+    background-color: #999999;
+    border-radius: 10px;
+}
+.btnsp2:hover {
+    color: #FFFFFF;
+    transition: color 0.3s linear;
+}
 
 /*-------------------------------------------ТАБЛИЦА-----------------------------------------------*/
 

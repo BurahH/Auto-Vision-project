@@ -33,13 +33,13 @@
                         </div>
                     </div>
 
-                    <div class="card mb-3 mb-lg-0">
+                    <div>
                         <div class="card-body p-0">
-                            <a class="btn btnsp" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Полис ОСАГО</a>
+                            <a class="btn btnsp2" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Полис ОСАГО</a>
                         </div>
                     </div>
-                    <div class="collapse multi-collapse card mb-4 mb-lg-0" id="multiCollapseExample1">
-                        <div class="card-body p-0">
+                    <div class="collapse" id="multiCollapseExample1">
+                        <div class="card">
                             <#if user.photoOsago??>
                             <img src="/img/${user.photoOsago}" alt="osago" class="rounded mx-auto d-block" style="width: 250px;height: 350px;">
                                 <#else>
@@ -50,14 +50,14 @@
 
                 </div>
                 <div class="col-lg-8">
-                    <div class="card mb-4">
+                    <div class="card">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-sm-21">
                                     <p class="mb-0">Email</p>
                                 </div>
-                                <div class="col-sm-621">
-                                    <p class="text-muted mb-0">${user.email}</p>
+                                <div class="col-sm-6 text-end col-sm-621">
+                                    <p class="text-end text-muted mb-0">${user.email}</p>
                                 </div>
                             </div>
                             <hr>
@@ -65,11 +65,11 @@
                                 <div class="col-sm-21">
                                     <p class="mb-0">ФИО</p>
                                 </div>
-                                <div class="col-sm-621">
+                                <div class="col-sm-6 text-end col-sm-621">
                                     <#if user.name??>
-                                        <p class="text-muted mb-0">${user.name}</p>
+                                        <p class="text-end text-muted mb-0">${user.name}</p>
                                     <#else>
-                                        <p class="text-muted mb-0">Отсутствует</p>
+                                        <p class="text-end text-muted mb-0">Отсутствует</p>
                                     </#if>
                                 </div>
                             </div>
@@ -78,24 +78,24 @@
                                 <div class="col-sm-21">
                                     <p class="mb-0">Номер телефона</p>
                                 </div>
-                                <div class="col-sm-621">
+                                <div class="col-sm-6 text-end col-sm-621">
                                     <#if user.name??>
-                                        <p class="text-muted mb-0">${user.number}</p>
+                                        <p class="text-end text-muted mb-0">${user.number}</p>
                                     <#else>
-                                        <p class="text-muted mb-0">Отсутствует</p>
+                                        <p class="text-end text-muted mb-0">Отсутствует</p>
                                     </#if>
                                 </div>
                             </div>
                         </div>
                     </div>
-
+                    <br>
                     <div class="col-lg-16">
-                        <div class="card mb-6">
+                        <div class="card">
                             <div class="card-body">
                                 <div class="title3">Автомобили</div>
                                 <div class="row">
                                     <div class="col-sm-52">
-                                        <p class="mb-0">Модель автомобиля</p>
+                                        <p class="text-muted mb-0">Модель автомобиля</p>
                                     </div>
                                     <div class="col-sm-52">
                                         <p class="text-muted mb-0">Номер автомобиля</p>
@@ -115,7 +115,7 @@
                                     <#list car as cars>
                                         <div class="row">
                                             <div class="col-sm-53">
-                                                <p class="mb-0">${cars.model}</p>
+                                                <p class="text-muted mb-0">${cars.model}</p>
                                             </div>
                                             <div class="col-sm-53">
                                                 <p class="text-muted mb-0">${cars.number}</p>
@@ -124,23 +124,23 @@
                                                 <p class="text-muted mb-0">${cars.vin}</p>
                                             </div>
                                             <#if cars.active>
-                                            <div class="col-sm-54">
+                                            <div class="col-sm-533">
                                                 <p class="text-success mb-0">Подтвержден</p>
                                             </div>
                                                 <#else>
-                                                    <div class="col-sm-54">
+                                                    <div class="col-sm-533">
                                                         <p class="text-danger mb-0">Проверка</p>
                                                     </div>
                                             </#if>
+                                            <div class="col-sm-2">
+                                                <a class="table-hr" href="/profile/car/${cars.id}">Edit</a>
                                             </div>
-                                            <div class="col-sm-5">
-                                                <a class="col-sm-54" href="/profile/car/${cars.id}">Edit</a>
-                                            </div>
+                                        </div>
                                          <hr>
                                     </#list>
                                 </#if>
                                 <div class="row">
-                                    <div class="col-sm-12">
+                                    <div class="col">
                                         <button type="button" class="btn btnp" data-toggle="modal" data-target="#modal" onclick="mask()">
                                             Добавить автомобиль
                                         </button>

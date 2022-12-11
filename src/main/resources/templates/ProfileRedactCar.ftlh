@@ -11,47 +11,47 @@
     </#if>
     <script src="https://snipp.ru/cdn/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://snipp.ru/cdn/maskedinput/jquery.maskedinput.min.js"></script>
-    <h2>Редактировать автомобиль</h2>
+    <div class="title2">Редактировать автомобиль</div>
 
     <form action="/profile/car/${car.id}" method="post" id="editUser" enctype="multipart/form-data">
         <div class="form-group">
-            <label class="col-sm-3 col-form-label"> Модель автомобиля : </label>
+            <label class="col-sm-21 col-form-label"> Модель автомобиля : </label>
             <div class="col-sm-6">
-                <input type="text" name="modelCar" class="form-control" value="${car.model}" required/>
+                <input type="text" name="modelCar" class="form-control2" value="${car.model}" required/>
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-3 col-form-label"> Номер автомобиля : </label>
+            <label class="col-sm-21 col-form-label"> Номер автомобиля : </label>
             <div class="col-sm-6">
-                <input type="text" name="number" class="mask-car form-control" value="${car.number}" required/>
+                <input type="text" name="number" class="mask-car form-control2" value="${car.number}" required/>
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-3 col-form-label"> VIN автомобиля : </label>
+            <label class="col-sm-21 col-form-label"> VIN автомобиля : </label>
             <div class="col-sm-6">
-                <input type="text" name="vin" class="form-control" value="${car.vin}" required/>
+                <input type="text" name="vin" class="form-control2" value="${car.vin}" required/>
             </div>
         </div>
 
-        <div class="card mb-8 mb-lg-0">
+        <div>
             <div class="card-body p-0">
-                <a class="btn btn-link btn-block text-left" data-toggle="collapse" href="#multiCollapseExample2" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">СТС автомобиля</a>
+                <a class="btn btns" data-toggle="collapse" href="#multiCollapseExample2" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">СТС автомобиля</a>
             </div>
         </div>
-        <div class="collapse multi-collapse card mb-8 mb-lg-0" id="multiCollapseExample2">
-            <div class="card-body p-0">
+        <div class="collapse" id="multiCollapseExample2">
+            <div class="card card-body">
                 <img src="/img/${car.sts}" alt="osago" class="rounded mx-auto d-block" style="width: 600px;height: 600px;">
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 col-form-label"> Изменить фото СТС : </label>
+            <label class="col-sm-21 col-form-label"> Изменить фото СТС : </label>
             <div class="col-sm-6">
                 <input type="file" name="sts">
             </div>
         </div>
 
             <div>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal">
+                <button type="button" class="btn btnp3" data-toggle="modal" data-target="#modal">
                     Удалить автомобиль
                 </button>
             </div>
@@ -65,18 +65,18 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <div class="modal-body">
+                        <div class="col-sm-31">
                             Вы уверены? Это действие нельзя отменить. Для подтверждения удаления введите номер автомобиля.
                             <div class="form-group">
-                                <label class="col-sm-2 col-form-label"> Номер: </label>
+                                <label class="col-sm-21 col-form-label"> Номер: </label>
                                 <div class="col-sm-6">
-                                    <input type="text" name="numberCar" class="form-control" placeholder="Номер" id="Login" required/>
+                                    <input type="text" name="numberCar" class="form-control2" placeholder="Номер" id="Login" required/>
                                 </div>
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="resetLogin()">Отмена</button>
-                            <button type="submit" class="btn btn-primary" name="delete">Удалить</button>
+                            <button type="button" class="btn btn-outline-secondary btnl" data-dismiss="modal" onclick="resetLogin()">Отмена</button>
+                            <button type="submit" class="btn btnp" name="delete">Удалить</button>
                         </div>
                     </div>
                 </div>
@@ -84,9 +84,9 @@
 
             <input type="hidden" value="${car.id}" name="carId">
             <input type="hidden" name="_csrf" value="${_csrf.token}" />
-            <button type="submit" class="btn btn-primary mb-2" onclick="form_submit()">Сохранить</button>
+            <button type="submit" class="btn btnp3" onclick="form_submit()">Сохранить</button>
+        <a class="btn btn-outline-secondary btnl" href="/profile" role="button">Назад</a>
     </form>
-    <a class="btn btn-light" href="/profile" role="button">Назад</a>
 
     <script>
         $.mask.definitions['h'] = '[А-Я]';
