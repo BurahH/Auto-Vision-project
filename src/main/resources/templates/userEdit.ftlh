@@ -1,6 +1,7 @@
 <#import "parts/commonNew.ftlh" as common>
 
 <@common.page>
+    <link rel="stylesheet" href="../static/carCheckEdit.css" type="text/css">
     <#if message??>
         <div class="${classInscription}" role="alert">
             ${message}
@@ -9,70 +10,72 @@
             </button>
         </div>
     </#if>
-   <h2>Редактировать пользователя</h2>
+   <div class="title2">Редактировать пользователя</div>
 
     <form action="/user" method="post" id="editUser" enctype="multipart/form-data">
         <div class="form-group">
-            <label class="col-sm-2 col-form-label"> E-mail : </label>
+            <div class="col-sm-21 col-form-label"> E-mail : </div>
             <div class="col-sm-6">
-                <input type="text" name="email" class="form-control" value="${user.email}"/>
+                <input type="text" name="email" class="form-control4" value="${user.email}"/>
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 col-form-label"> Логин : </label>
+            <div class="col-sm-21 col-form-label"> Логин : </div>
             <div class="col-sm-6">
-                <input type="text" name="username" class="form-control" value="${user.username}"/>
+                <input type="text" name="username" class="form-control4" value="${user.username}"/>
             </div>
         </div>
 
         <div class="form-group">
-            <label class="col-sm-2 col-form-label"> ФИО : </label>
+            <div class="col-sm-21 col-form-label"> ФИО : </div>
             <div class="col-sm-6">
-                <input type="text" name="name" class="form-control" value="<#if user.name??>${user.name}</#if>"/>
+                <input type="text" name="name" class="form-control4" value="<#if user.name??>${user.name}</#if>"/>
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 col-form-label"> Номер телефона : </label>
+            <div class="col-sm-21 col-form-label"> Номер телефона : </div>
             <div class="col-sm-6">
-                <input type="text" name="number" class="form-control" value="<#if user.number??>${user.number}</#if>"/>
+                <input type="text" name="number" class="form-control4" value="<#if user.number??>${user.number}</#if>"/>
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 col-form-label"> Пароль : </label>
+            <div class="col-sm-21 col-form-label"> Пароль : </div>
             <div class="col-sm-6">
-                <input type="text" name="password" class="form-control" placeholder="Password"/>
+                <input type="text" name="password" class="form-control4" placeholder="Password"/>
             </div>
         </div>
 
-        <div class="card mb-8 mb-lg-0">
+        <div>
             <div class="card-body p-0">
-                <a class="btn btn-link btn-block text-left" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Полис ОСАГО</a>
+                <a class="btn btns" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Полис ОСАГО</a>
             </div>
         </div>
-        <div class="collapse multi-collapse card mb-8 mb-lg-0" id="multiCollapseExample1">
-            <div class="card-body p-0">
+        <div class="collapse" id="multiCollapseExample1">
+            <div class="card card-body">
                 <img src="/img/<#if user.photoOsago??>${user.photoOsago}<#else>documentstandart.png</#if>" alt="osago" class="rounded mx-auto d-block" style="width: 600px;height: 600px;">
             </div>
         </div>
 
-        <div class="card mb-8 mb-lg-0">
+        <div>
             <div class="card-body p-0">
-                <a class="btn btn-link btn-block text-left" data-toggle="collapse" href="#multiCollapseExample2" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Фото пользователя</a>
+                <a class="btn btns" data-toggle="collapse" href="#multiCollapseExample2" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Фото пользователя</a>
             </div>
         </div>
-        <div class="collapse multi-collapse card mb-8 mb-lg-0" id="multiCollapseExample2">
-            <div class="card-body p-0">
+        <div class="collapse" id="multiCollapseExample2">
+            <div class="card card-body">
                 <img src="/img/<#if user.photo??>${user.photo}<#else>photostandart.png</#if>" alt="osago" class="rounded mx-auto d-block" style="width: 600px;height: 600px;">
             </div>
         </div>
+
+
         <div class="form-group">
-            <label class="col-sm-2 col-form-label"> Изменить фото ОСАГО : </label>
+            <div class="col-sm-21 col-form-label"> Изменить фото ОСАГО : </div>
             <div class="col-sm-6">
                 <input type="file" name="photoOsago">
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 col-form-label"> Изменить фото : </label>
+            <div class="col-sm-21 col-form-label"> Изменить фото : </div>
             <div class="col-sm-6">
                 <input type="file" name="photo">
             </div>
@@ -91,7 +94,7 @@
 
 
         <div>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal">
+        <button type="button" class="btn btnp3" data-toggle="modal" data-target="#modal">
             Удалить пользователя
         </button>
         </div>
@@ -108,15 +111,15 @@
                     <div class="modal-body">
                         Вы уверены? Это действие нельзя отменить. Для подтверждения удаления введите логин пользователя.
                         <div class="form-group">
-                            <label class="col-sm-2 col-form-label"> Логин: </label>
+                            <div class="col-sm-21 col-form-label"> Логин: </div>
                             <div class="col-sm-6">
-                                <input type="username" name="adminLogin" class="form-control" placeholder="login" id="Login" required/>
+                                <input type="username" name="adminLogin" class="form-control2" placeholder="login" id="Login" required/>
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="resetLogin()">Отмена</button>
-                        <button type="submit" class="btn btn-primary" name="delete">Удалить</button>
+                        <button type="button" class="btn btn-outline-secondary btnl" data-dismiss="modal" onclick="resetLogin()">Отмена</button>
+                        <button type="submit" class="btn btnp3" name="delete">Удалить</button>
                     </div>
                 </div>
             </div>
@@ -124,9 +127,9 @@
 
         <input type="hidden" value="${user.id}" name="userId">
         <input type="hidden" name="_csrf" value="${_csrf.token}" />
-        <button type="submit" class="btn btn-primary mb-2" onclick="form_submit()">Сохранить</button>
+        <button type="submit" class="btn btnp3" onclick="form_submit()">Сохранить</button>
+        <a class="btn btn-outline-secondary btnl" href="/user" role="button">Назад</a>
     </form>
-    <a class="btn btn-light" href="/user" role="button">Назад</a>
     <script>
         function resetLogin(){
             document.getElementById("Login").value = "";

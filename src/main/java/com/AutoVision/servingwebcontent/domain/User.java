@@ -85,6 +85,12 @@ public class User implements UserDetails {
     }
 
     public boolean haveNew(String username, String email, String name, String number){
+        if(this.name == null){
+            this.name = "";
+        }
+        if(this.number == null){
+            this.number = "";
+        }
         if((this.name.equals(name)) && (this.username.equals(username)) && (this.email.equals(email)) && (this.number.equals(number)))
         {
             return false;

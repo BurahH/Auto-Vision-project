@@ -10,7 +10,7 @@
                         <div class="col-sm-61">
                             <p class="mb-0">Время</p>
                         </div>
-                        <div class="col-sm-611">
+                        <div class="col-sm-61">
                                 <p class="mb-0">Автомобиль</p>
                         </div>
                     </div>
@@ -21,7 +21,7 @@
                                 <div class="col-sm-62">
                                     <p class="mb-0">${st.time}</p>
                                 </div>
-                                <div class="col-sm-621">
+                                <div class="col-sm-62">
                                     <p class="mb-0">${st.car.model}</p>
                                 </div>
                             </div>
@@ -29,7 +29,7 @@
                         </#list>
                         <#else>
                             <div class="row">
-                            <div class="col-sm-62">
+                            <div class="col-sm-12">
                                 <p class="mb-0">Нет заездов на парковку</p>
                             </div>
                             </div>
@@ -46,7 +46,7 @@
                         <div class="col-sm-61">
                             <p class="mb-0">Номер парковочного места</p>
                         </div>
-                        <div class="col-sm-611">
+                        <div class="col-sm-61">
                             <p class="mb-0">Дата окончания аренды</p>
                         </div>
                     </div>
@@ -57,7 +57,7 @@
                                 <div class="col-sm-62">
                                     <p class="mb-0">${par.number}</p>
                                 </div>
-                                <div class="col-sm-621">
+                                <div class="col-sm-62">
                                     <#if par.status == "Куплен">
                                         <p class="mb-0">Куплено</p>
                                     <#else>
@@ -69,7 +69,7 @@
                         </#list>
                     <#else>
                         <div class="row">
-                            <div class="col-sm-62">
+                            <div class="col-sm-12">
                                 <p class="mb-0">Не зарегистрировано въездов или выездов</p>
                             </div>
                         </div>

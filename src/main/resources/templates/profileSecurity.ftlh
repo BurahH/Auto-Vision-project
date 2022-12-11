@@ -10,22 +10,22 @@
             </button>
         </div>
     </#if>
-    <h2>Безопасность</h2>
+    <div class="title2">Безопасность</div>
     <form method="post">
     <div class="form-group">
-        <label class="col-sm-2 col-form-label"> E-mail : </label>
+        <div class="col-sm-21 col-form-label"> E-mail : </div>
         <div class="col-sm-6">
-            <input type="email" name="email" class="form-control" value="${email}"/>
+            <input type="email" name="email" class="form-control2" value="${email}"/>
         </div>
     </div>
     <div class="form-group">
-        <label class="col-sm-2 col-form-label"> Пароль : </label>
+        <div class="col-sm-21 col-form-label"> Пароль : </div>
         <div class="col-sm-6">
-            <input type="password" name="password" class="form-control" placeholder="Password"/>
+            <input type="password" name="password" class="form-control2" placeholder="Password"/>
         </div>
     </div>
     <input type="hidden" name="_csrf" value="${_csrf.token}" />
-    <button type="submit" class="btn btn-primary mb-2">Сохранить</button>
-        <a class="btn btn-light" href="/profile" role="button">Назад</a>
+    <button type="submit" class="btn btnp">Сохранить</button>
+        <a class="btn btn-outline-secondary btnl" href="/profile" role="button">Назад</a>
     </form>
 </@common.page>

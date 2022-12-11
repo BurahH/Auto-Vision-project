@@ -98,7 +98,7 @@ public class parkingUserController {
             return "parkingView";
         }
         Card card = cardRepos.findByNumber(number);
-        if((card.getCvc().equals(passwordEncoder.encode(cvc))) && (card.getDate().equals(srok)) && (card.getName().equals(name))){
+        if((passwordEncoder.matches(cvc, card.getCvc())) && (card.getDate().equals(srok)) && (card.getName().equals(name))){
             Long money = card.getMoney();
             if(priceBuy == 0)
             {
@@ -152,5 +152,28 @@ public class parkingUserController {
         else{
             return "redirect:/view";
         }
+    }
+
+    @GetMapping("/card")
+    public String card(Model model){
+        return "card";
+    }
+
+    @PostMapping("/card")
+    public String newCard(@RequestParam String number,
+                          @RequestParam String date,
+                          @RequestParam String name,
+                          @RequestParam String cvc,
+                          @RequestParam int moneyCard,
+                          Model model){
+        Long money = Long.valueOf(moneyCard);
+        Card card = new Card();
+        card.setNumber(number);
+        card.setDate(date);
+        card.setName(name);
+        card.setCvc(passwordEncoder.encode(cvc));
+        card.setMoney(money);
+        cardRepos.save(card);
+        return "card";
     }
 }

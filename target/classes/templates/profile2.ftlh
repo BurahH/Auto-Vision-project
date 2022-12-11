@@ -28,7 +28,7 @@
                                 <button type="button" class="btn btnp" onclick="window.location.href = '/profile/security'">Безопасность</button>
                             </div>
                             <div class="d-flex justify-content-center mb-2">
-                                <button type="button" class="btn btn-outline-secondary btnl" onclick="window.location.href = '/profile/edit'">Редактировать профиль</button>
+                                <button type="button" class="btn btn-outline-primary btnl" onclick="window.location.href = '/profile/edit'">Редактировать профиль</button>
                             </div>
                         </div>
                     </div>
@@ -56,7 +56,7 @@
                                 <div class="col-sm-21">
                                     <p class="mb-0">Email</p>
                                 </div>
-                                <div class="col-sm-621">
+                                <div class="col-sm-62">
                                     <p class="text-muted mb-0">${user.email}</p>
                                 </div>
                             </div>
@@ -65,7 +65,7 @@
                                 <div class="col-sm-21">
                                     <p class="mb-0">ФИО</p>
                                 </div>
-                                <div class="col-sm-621">
+                                <div class="col-sm-62">
                                     <#if user.name??>
                                         <p class="text-muted mb-0">${user.name}</p>
                                     <#else>
@@ -78,7 +78,7 @@
                                 <div class="col-sm-21">
                                     <p class="mb-0">Номер телефона</p>
                                 </div>
-                                <div class="col-sm-621">
+                                <div class="col-sm-62">
                                     <#if user.name??>
                                         <p class="text-muted mb-0">${user.number}</p>
                                     <#else>
@@ -120,7 +120,7 @@
                                             <div class="col-sm-53">
                                                 <p class="text-muted mb-0">${cars.number}</p>
                                             </div>
-                                            <div class="col-sm-53">
+                                            <div class="col-sm-52">
                                                 <p class="text-muted mb-0">${cars.vin}</p>
                                             </div>
                                             <#if cars.active>
@@ -133,8 +133,8 @@
                                                     </div>
                                             </#if>
                                             </div>
-                                            <div class="col-sm-5">
-                                                <a class="col-sm-54" href="/profile/car/${cars.id}">Edit</a>
+                                            <div class="col-sm-54">
+                                                <a href="/profile/car/${cars.id}">Edit</a>
                                             </div>
                                          <hr>
                                     </#list>

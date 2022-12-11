@@ -5,12 +5,12 @@
         <div class="col-lg-6">
             <div class="card mb-4">
                 <div class="card-body">
-                    <div class="title3">Заезды/выезды с паркинга</div>
+                    <h5 class="my-3">Заезды/выезды с паркинга</h5>
                     <div class="row">
-                        <div class="col-sm-61">
+                        <div class="col-sm-6">
                             <p class="mb-0">Время</p>
                         </div>
-                        <div class="col-sm-611">
+                        <div class="col-sm-6">
                                 <p class="mb-0">Автомобиль</p>
                         </div>
                     </div>
@@ -18,10 +18,10 @@
                     <#if story??>
                         <#list story as st>
                             <div class="row">
-                                <div class="col-sm-62">
+                                <div class="col-sm-6">
                                     <p class="mb-0">${st.time}</p>
                                 </div>
-                                <div class="col-sm-621">
+                                <div class="col-sm-6">
                                     <p class="mb-0">${st.car.model}</p>
                                 </div>
                             </div>
@@ -29,7 +29,7 @@
                         </#list>
                         <#else>
                             <div class="row">
-                            <div class="col-sm-62">
+                            <div class="col-sm-12">
                                 <p class="mb-0">Нет заездов на парковку</p>
                             </div>
                             </div>
@@ -41,12 +41,12 @@
         <div class="col-lg-6">
             <div class="card mb-4">
                 <div class="card-body">
-                    <div class="title3">Парковочные места</div>
+                    <h5 class="my-3">Парковочные места</h5>
                     <div class="row">
-                        <div class="col-sm-61">
+                        <div class="col-sm-6">
                             <p class="mb-0">Номер парковочного места</p>
                         </div>
-                        <div class="col-sm-611">
+                        <div class="col-sm-6">
                             <p class="mb-0">Дата окончания аренды</p>
                         </div>
                     </div>
@@ -54,10 +54,10 @@
                     <#if parkingPlace??>
                         <#list parkingPlace as par>
                             <div class="row">
-                                <div class="col-sm-62">
+                                <div class="col-sm-6">
                                     <p class="mb-0">${par.number}</p>
                                 </div>
-                                <div class="col-sm-621">
+                                <div class="col-sm-6">
                                     <#if par.status == "Куплен">
                                         <p class="mb-0">Куплено</p>
                                     <#else>
@@ -69,7 +69,7 @@
                         </#list>
                     <#else>
                         <div class="row">
-                            <div class="col-sm-62">
+                            <div class="col-sm-12">
                                 <p class="mb-0">Не зарегистрировано въездов или выездов</p>
                             </div>
                         </div>

@@ -9,43 +9,43 @@
     </button>
 </div>
 </#if>
-<h2>Редактировать парковочное место</h2>
+<div class="title2">Редактировать парковочное место</div>
 
 <form action="/parking" method="post" id="editUser">
     <div class="form-group">
-        <label class="col-sm-3 col-form-label"> Номер места : </label>
-        <div class="col-sm-6">
+        <label class="col-sm-21 col-form-label"> Номер места : </label>
+        <div class="col-sm-21">
             <p class="text-muted mb-0">${parking.number}</p>
         </div>
     </div>
     <div class="form-group">
-        <label class="col-sm-3 col-form-label"> Цена за бронирование (1 месяц) : </label>
+        <label class="col-sm-21 col-form-label"> Цена за бронирование (1 месяц) : </label>
         <div class="col-sm-6">
-            <input type="text" name="price" class="form-control" value="<#if parking.price??>#{parking.price}</#if>" placeholder="Цена" required onkeyup="this.value = this.value.replace(/[^\d]/g,'');"/>
+            <input type="text" name="price" class="form-control2" value="<#if parking.price??>#{parking.price}</#if>" placeholder="Цена" required onkeyup="this.value = this.value.replace(/[^\d]/g,'');"/>
         </div>
     </div>
     <div class="form-group">
-        <label class="col-sm-3 col-form-label"> Цена покупки места : </label>
+        <label class="col-sm-21 col-form-label"> Цена покупки места : </label>
         <div class="col-sm-6">
-            <input type="text" name="priceBuy" class="form-control" value="<#if parking.priceBuy??>#{parking.priceBuy}</#if>" placeholder="Цена на покупку" required onkeyup="this.value = this.value.replace(/[^\d]/g,'');"/>
+            <input type="text" name="priceBuy" class="form-control2" value="<#if parking.priceBuy??>#{parking.priceBuy}</#if>" placeholder="Цена на покупку" required onkeyup="this.value = this.value.replace(/[^\d]/g,'');"/>
         </div>
     </div>
     <div class="form-group">
-        <label class="col-sm-3 col-form-label"> Текущий статус : </label>
-        <div class="col-sm-6">
+        <label class="col-sm-21 col-form-label"> Текущий статус : </label>
+        <div class="col-sm-21">
             <p class="text-muted mb-0">${parking.status}</p>
         </div>
     </div>
     <div class="form-group">
-        <label class="col-sm-3 col-form-label"> Дата окончания аренды: </label>
-        <div class="col-sm-6">
+        <label class="col-sm-21 col-form-label"> Дата окончания аренды: </label>
+        <div class="col-sm-21">
             <p class="text-muted mb-0"><#if parking.endTime??>${parking.endTime}<#else>Место не арендовано</#if></p>
         </div>
     </div>
 
         <input type="hidden" value="${parking.id}" name="parkingId">
         <input type="hidden" name="_csrf" value="${_csrf.token}" />
-        <button type="submit" class="btn btn-primary mb-2">Сохранить</button>
+        <button type="submit" class="btn btnp">Сохранить</button>
+    <a class="btn btn-outline-secondary btnl" href="/parking" role="button">Назад</a>
 </form>
-<a class="btn btn-light" href="/parking" role="button">Назад</a>
 </@common.page>

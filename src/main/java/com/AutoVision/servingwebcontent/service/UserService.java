@@ -88,7 +88,7 @@ public class UserService implements UserDetailsService {
                 return "Email repeats";
             }
 
-            user.setActive(false);
+            user.setActive(true);
             user.setRoles(Collections.singleton(Role.USER));
             user.setActivationCode(UUID.randomUUID().toString());
             user.setPassword(passwordEncoder.encode(user.getPassword()));
