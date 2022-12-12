@@ -40,14 +40,21 @@ public class UserController {
     @GetMapping
     public String UserList(
             @RequestParam(required = false, defaultValue = "") String filter,
+            @AuthenticationPrincipal User user,
             Model model){
         if (filter != null && !filter.isEmpty()) {
             model.addAttribute("filtered", filter);
-            model.addAttribute("users", userService.findUser(filter));
+            List<User> usr = userService.findUser(filter);
+            User user2 = userRepos.getOne(user.getId());
+            usr.remove(user2);
+            model.addAttribute("users", usr);
             return "userList";
         }
         model.addAttribute("filtered", "");
-        model.addAttribute("users", userService.findAlluser());
+        List<User> userFull = userService.findAlluser();
+        User user1 = userRepos.getOne(user.getId());
+        userFull.remove(user1);
+        model.addAttribute("users", userFull);
         return "userList";
     }
 

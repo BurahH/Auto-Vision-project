@@ -88,7 +88,7 @@ public class UserService implements UserDetailsService {
                 return "Email repeats";
             }
 
-            user.setActive(true);
+            user.setActive(false);
             user.setRoles(Collections.singleton(Role.USER));
             user.setActivationCode(UUID.randomUUID().toString());
             user.setPassword(passwordEncoder.encode(user.getPassword()));
@@ -204,7 +204,7 @@ public class UserService implements UserDetailsService {
 
     public  List<User> findUser(String filter) {
         List<User> findUser = userRepos.findByUsernameLike(filter + '%');
-         findUser.addAll(userRepos.findByEmailLike(filter + '%'));
+        findUser.addAll(userRepos.findByEmailLike(filter + '%'));
         return findUser;
     }
 

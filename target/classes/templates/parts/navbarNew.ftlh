@@ -28,6 +28,7 @@
                     <a class="menu_item1-3" href="/">Камеры</a>
                     <a class="menu_item2-3" href="/checklist">Верификация пользователей</a>
                     <a class="menu_item3-3" href="/checklist/carlist">Верификация автомобилей</a>
+                    <a class="menu_item3-4" href="/checkAuto">Пропуск автомобилей</a>
                 </div>
             </#if>
 
