@@ -52,7 +52,7 @@
         </div>
         <div class="collapse" id="multiCollapseExample1">
             <div class="card card-body">
-                <img src="/img/<#if user.photoOsago??>${user.photoOsago}<#else>documentstandart.png</#if>" alt="osago" class="rounded mx-auto d-block" style="width: 600px;height: 600px;">
+                <img src="<#if user.photoOsago??>/img/${user.photoOsago}<#else>../../static/documentstandart.png</#if>" alt="osago" class="rounded mx-auto d-block" style="width: 600px;height: 600px;">
             </div>
         </div>
 
@@ -63,7 +63,7 @@
         </div>
         <div class="collapse" id="multiCollapseExample2">
             <div class="card card-body">
-                <img src="/img/<#if user.photo??>${user.photo}<#else>photostandart.png</#if>" alt="osago" class="rounded mx-auto d-block" style="width: 600px;height: 600px;">
+                <img src="<#if user.photo??>/img/${user.photo}<#else>../../static/photostandart.png</#if>" alt="osago" class="rounded mx-auto d-block" style="width: 600px;height: 600px;">
             </div>
         </div>
 

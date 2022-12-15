@@ -13,7 +13,7 @@
                             <#if user.photo??>
                             <img src="/img/${user.photo}" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;height: 150px;">
                                 <#else>
-                                    <img src="/img/photostandart.png" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;height: 150px;">
+                                    <img src="../../static/photostandart.png" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;height: 150px;">
                             </#if>
                             <div class="col-sm-51">${user.username}</div>
                             <#if isFullUser>
@@ -44,7 +44,7 @@
                             <#if user.photoOsago??>
                             <img src="/img/${user.photoOsago}" alt="osago" class="rounded mx-auto d-block" style="width: 250px;height: 350px;">
                                 <#else>
-                                    <img src="/img/documentstandart.png" alt="osago" class="rounded mx-auto d-block" style="width: 250px;height: 350px;">
+                                    <img src="../../static/documentstandart.png" alt="osago" class="rounded mx-auto d-block" style="width: 250px;height: 350px;">
                             </#if>
                         </div>
                     </div>

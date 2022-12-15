@@ -6,10 +6,10 @@
     <div class="park">
         <div class="background">
             <div class="background1">
-                <img src="img/image/plan.png" alt="">
+                <img src="static/plan.png" alt="">
             </div>
             <div class="background2">
-                <img src="img/image/plan.png" alt="">
+                <img src="static/plan.png" alt="">
             </div>
             <div class="plug">
                 <div class="plug1"></div>
@@ -45,13 +45,13 @@
             <div class="sold">Место продано</div>
             <div class="reserved">Место арендовано</div>
             <div class="pts1">
-                <img src="img/image/ec1.png" alt="">
+                <img src="static/ec1.png" alt="">
             </div>    
             <div class="pts2">    
-                <img src="img/image/ec2.png" alt="">
+                <img src="static/ec2.png" alt="">
             </div>      
             <div class="pts3">
-                <img src="img/image/ec3.png" alt="">
+                <img src="static/ec3.png" alt="">
             </div> 
         </div>
     </div>
