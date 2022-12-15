@@ -1,41 +1,58 @@
 <#include "securuty.ftlh">
 <#import "login.ftlh" as login>
 
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <img class="navbar-brand" src="../../img/image/logo.png" alt="">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
 <div class="header">
     <div class="container">
         <div class="header_line">
-            <div class="header_logo">
-                <img src="../../img/image/logo.png" alt="">
-            </div>
-
+            <ul class="navbar-nav mr-auto">
             <#if isUser>
-            <div class="menu">
-                <a class="menu_item1" href="/">Главная</a>
-                <a class="menu_item2" href="/view">Парковка</a>
-            </div>
+                <li class="nav-item active">
+                    <a class="nav-link menu_item1" href="/">Главная</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link menu_item2" href="/view">Парковка</a>
+                </li>
             </#if>
 
             <#if isAdmin>
-                <div class="menu">
-                    <a class="menu_item1-2" href="/user">Пользователи</a>
-                    <a class="menu_item2-2" href="/car">Автомобили</a>
-                    <a class="menu_item3-2" href="/parking">Парковка</a>
-                </div>
+                <li class="nav-item active">
+                    <a class="nav-link menu_item1-2" href="/user">Пользователи</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link menu_item2-2" href="/car">Автомобили</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link menu_item3-2" href="/parking">Парковка</a>
+                </li>
             </#if>
 
             <#if isWatchman>
-                <div class="menu">
-                    <a class="menu_item1-3" href="/">Камеры</a>
-                    <a class="menu_item2-3" href="/checklist">Верификация пользователей</a>
-                    <a class="menu_item3-3" href="/checklist/carlist">Верификация автомобилей</a>
-                    <a class="menu_item3-4" href="/checkAuto">Пропуск автомобилей</a>
-                </div>
+                <li class="nav-item active">
+                    <a class="nav-link menu_item1-3" href="/">Камеры</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link menu_item2-3" href="/checklist">Верификация пользователей</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link menu_item3-3" href="/checklist/carlist">Верификация автомобилей</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link menu_item3-3" href="/checkAuto">Пропуск автомобилей</a>
+                </li>
             </#if>
 
             <#if "${name}" = "unknown">
                 <div class="menu">
                 </div>
             </#if>
+        </div>
+</nav>
 
             <div class="phone">
                 <div class="number">+0 (123) 456-78-90</div>
@@ -43,6 +60,7 @@
                     <img src="../../img/image/Phone.png" alt="">
                 </div>
             </div>
+            </ul>
 
             <#if "${name}" != "unknown">
             <div class="LK">

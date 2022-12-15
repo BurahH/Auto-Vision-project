@@ -8,6 +8,8 @@ import com.AutoVision.servingwebcontent.repos.CardRepos;
 import com.AutoVision.servingwebcontent.repos.ParkingPlaceRepos;
 import com.AutoVision.servingwebcontent.repos.StoryRepos;
 import com.AutoVision.servingwebcontent.service.ParkingService;
+import org.apache.commons.net.ntp.NTPUDPClient;
+import org.apache.commons.net.ntp.TimeInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -18,6 +20,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.io.IOException;
+import java.net.InetAddress;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -34,7 +38,7 @@ public class parkingUserController {
     private PasswordEncoder passwordEncoder;
 
     @GetMapping("/view")
-    public String parking(Model model){
+    public String parking(Model model) throws IOException {
         Iterable<ParkingPlace> parkingPlace = parkingPlaceRepos.findAll();
         int i = 0;
         int min = 32000000;
@@ -79,7 +83,7 @@ public class parkingUserController {
                              @RequestParam String number,
                              @RequestParam String srok,
                              @RequestParam String name,
-                             @RequestParam String cvc){
+                             @RequestParam String cvc) throws IOException {
         ParkingPlace parkingPlace = parkingPlaceRepos.getOne(parkingPlaceId);
         if(user.getActivationCode() != null){
             model.addAttribute("message", "Пожалуйста подтвердите почту для покупки места");
@@ -133,7 +137,15 @@ public class parkingUserController {
             }
             else{
                 parkingPlace.setStatus("Арендован");
+                parkingPlace.setStatus("Арендован");
+                String TIME_SERVER = "time-a.nist.gov";
+                NTPUDPClient timeClient = new NTPUDPClient();
+                InetAddress inetAddress = InetAddress.getByName(TIME_SERVER);
+                TimeInfo timeInfo = timeClient.getTime(inetAddress);
+                long returnTime = timeInfo.getMessage().getTransmitTimeStamp().getTime();
+                Date date1 = new Date(returnTime);
                 Calendar calendar = new GregorianCalendar();
+                calendar.setTime(date1);
                 calendar.add(Calendar.MONTH, priceBuy);
                 Date date = calendar.getTime();
                 parkingPlace.setEndTime(date);

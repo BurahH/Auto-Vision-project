@@ -5,9 +5,10 @@
     <link rel="stylesheet" href="../static/carCheckEdit.css" type="text/css">
     <script src="https://snipp.ru/cdn/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://snipp.ru/cdn/maskedinput/jquery.maskedinput.min.js"></script>
+    <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-3">
-                    <div class="card mb-3">
+                <div class="col-lg-auto">
+                    <div class="card mb-auto">
                         <div class="card-body text-center">
                             <#if user.photo??>
                             <img src="/img/${user.photo}" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;height: 150px;">
@@ -49,7 +50,7 @@
                     </div>
 
                 </div>
-                <div class="col-lg-8">
+                <div class="col-mb-auto">
                     <div class="card">
                         <div class="card-body">
                             <div class="row">
@@ -89,7 +90,7 @@
                         </div>
                     </div>
                     <br>
-                    <div class="col-lg-16">
+                    <div class="col-mb-auto">
                         <div class="card">
                             <div class="card-body">
                                 <div class="title3">Автомобили</div>
@@ -100,7 +101,7 @@
                                     <div class="col-sm-52">
                                         <p class="text-muted mb-0">Номер автомобиля</p>
                                     </div>
-                                    <div class="col-sm-52">
+                                    <div class="col-sm-5222">
                                         <p class="text-muted mb-0">VIN номер</p>
                                     </div>
                                     <div class="col-sm-52">
@@ -120,7 +121,7 @@
                                             <div class="col-sm-53">
                                                 <p class="text-muted mb-0">${cars.number}</p>
                                             </div>
-                                            <div class="col-sm-53">
+                                            <div class="col-sm-444">
                                                 <p class="text-muted mb-0">${cars.vin}</p>
                                             </div>
                                             <#if cars.active>
@@ -132,7 +133,7 @@
                                                         <p class="text-danger mb-0">Проверка</p>
                                                     </div>
                                             </#if>
-                                            <div class="col-sm-2">
+                                            <div class="col-sm-53">
                                                 <a class="table-hr" href="/profile/car/${cars.id}">Edit</a>
                                             </div>
                                         </div>
@@ -205,6 +206,7 @@
                 </div>
             </div>
         </div>
+    </div>
     </div>
     <script>
         $.mask.definitions['h'] = '[А-Я]';

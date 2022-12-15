@@ -91,6 +91,8 @@ public class UserController {
             List<ParkingPlace> parking = parkingPlaceRepos.findByUserId(user.getId());
             for(ParkingPlace parkingPlace : parking) {
                 parkingPlace.setUser(null);
+                parkingPlace.setEndTime(null);
+                parkingPlace.setStatus("Открыт");
             }
             carRepos.deleteAll(cars);
             userRepos.deleteById(user.getId());

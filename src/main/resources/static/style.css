@@ -42,12 +42,6 @@ body {
     align-items: flex-start;
     padding: 0px 4px;
 
-    position: absolute;
-    width: 100px;
-    height: 23px;
-    left: 284px;
-    top: 18px;
-
     font-family: 'Raleway';
     font-style: normal;
     font-weight: 400;
@@ -68,12 +62,6 @@ body {
     align-items: flex-start;
     padding: 0px 4px;
 
-    position: absolute;
-    width: 111px;
-    height: 23px;
-    left: 404px;
-    top: 18px;
-
     font-family: 'Raleway';
     font-style: normal;
     font-weight: 400;
@@ -92,12 +80,6 @@ body {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-
-    position: absolute;
-    width: 134px;
-    height: 29px;
-    left: 535px;
-    top: 18px;
 
     font-family: 'Raleway';
     font-style: normal;
@@ -119,12 +101,6 @@ body {
     align-items: flex-start;
     padding: 0px 4px;
 
-    position: absolute;
-    width: 98px;
-    height: 23px;
-    left: 689px;
-    top: 18px;
-
     font-family: 'Raleway';
     font-style: normal;
     font-weight: 400;
@@ -144,12 +120,6 @@ body {
     flex-direction: row;
     align-items: flex-start;
     padding: 0px 4px;
-
-    position: absolute;
-    width: 150px;
-    height: 23px;
-    left: 284px;
-    top: 18px;
 
     font-family: 'Raleway';
     font-style: normal;
@@ -171,12 +141,6 @@ body {
     align-items: flex-start;
     padding: 0px 4px;
 
-    position: absolute;
-    width: 111px;
-    height: 23px;
-    left: 435px;
-    top: 18px;
-
     font-family: 'Raleway';
     font-style: normal;
     font-weight: 400;
@@ -195,12 +159,6 @@ body {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-
-    position: absolute;
-    width: 134px;
-    height: 29px;
-    left: 575px;
-    top: 18px;
 
     font-family: 'Raleway';
     font-style: normal;
@@ -222,12 +180,6 @@ body {
     align-items: flex-start;
     padding: 0px 4px;
 
-    position: absolute;
-    width: 150px;
-    height: 23px;
-    left: 284px;
-    top: 18px;
-
     font-family: 'Raleway';
     font-style: normal;
     font-weight: 400;
@@ -248,11 +200,6 @@ body {
     align-items: flex-start;
     padding: 0px 4px;
 
-    position: absolute;
-    height: 23px;
-    left: 380px;
-    top: 18px;
-
     font-family: 'Raleway';
     font-style: normal;
     font-weight: 400;
@@ -271,11 +218,6 @@ body {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-
-    position: absolute;
-    height: 29px;
-    left: 680px;
-    top: 18px;
 
     font-family: 'Raleway';
     font-style: normal;
@@ -297,12 +239,6 @@ body {
     align-items: flex-start;
     padding: 0px 4px;
 
-    position: absolute;
-    width: 150px;
-    height: 23px;
-    left: 284px;
-    top: 18px;
-
     font-family: 'Raleway';
     font-style: normal;
     font-weight: 400;
@@ -323,12 +259,6 @@ body {
     align-items: flex-start;
     padding: 0px 4px;
 
-    position: absolute;
-    width: 130px;
-    height: 23px;
-    left: 400px;
-    top: 18px;
-
     font-family: 'Raleway';
     font-style: normal;
     font-weight: 400;
@@ -347,12 +277,6 @@ body {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-
-    position: absolute;
-    width: 300px;
-    height: 29px;
-    left: 960px;
-    top: 18px;
 
     font-family: 'Raleway';
     font-style: normal;
@@ -374,7 +298,7 @@ body {
     width: 20px;
     height: 20px;
     left: 1650px;
-    top: 17px;
+    top: 20px;
     }
 
 .number {
@@ -387,7 +311,7 @@ body {
     width: 163px;
     height: 24px;
     left: 1680px;
-    top: 15px;
+    top: 20px;
     
     border-right: 1px solid #000000;
 }
@@ -399,7 +323,7 @@ body {
     width: 20px;
     height: 20px;
     left: 1849px;
-    top: 10px;
+    top: 15px;
 }
 
 
