@@ -15,13 +15,14 @@
                         </div>
                     </div>
                     <hr>
+                    <div class="skrol">
                     <#if story??>
                         <#list story as st>
                             <div class="row">
                                 <div class="col-sm-6 col-sm-62">
                                     <p class="text-start mb-0">${st.time}</p>
                                 </div>
-                                <div class="col-sm-6 col-sm-621">
+                                <div class="col-sm-5 col-sm-621">
                                     <p class="text-end mb-0">${st.car.model}</p>
                                 </div>
                             </div>
@@ -34,6 +35,7 @@
                             </div>
                             </div>
                     </#if>
+                    </div>
                 </div>
             </div>
         </div>
@@ -50,7 +52,7 @@
                             <p class="text-end mb-0">Дата окончания аренды</p>
                         </div>
                     </div>
-                    <hr>
+                    <hr >
                     <#if parkingPlace??>
                         <#list parkingPlace as par>
                             <div class="row">
@@ -70,7 +72,7 @@
                     <#else>
                         <div class="row">
                             <div class="col-sm-6 col-sm-62">
-                                <p class="mb-0">Не зарегистрировано въездов или выездов</p>
+                                <p class="mb-0">Нет парковочных мест</p>
                             </div>
                         </div>
                     </#if>

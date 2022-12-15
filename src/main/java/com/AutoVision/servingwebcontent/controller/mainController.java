@@ -1,7 +1,13 @@
 package com.AutoVision.servingwebcontent.controller;
 
-import com.AutoVision.servingwebcontent.domain.*;
-import com.AutoVision.servingwebcontent.repos.*;
+import com.AutoVision.servingwebcontent.domain.Car;
+import com.AutoVision.servingwebcontent.domain.ParkingPlace;
+import com.AutoVision.servingwebcontent.domain.Story;
+import com.AutoVision.servingwebcontent.domain.User;
+import com.AutoVision.servingwebcontent.repos.CarRepos;
+import com.AutoVision.servingwebcontent.repos.ParkingPlaceRepos;
+import com.AutoVision.servingwebcontent.repos.StoryRepos;
+import com.AutoVision.servingwebcontent.repos.UserRepos;
 import com.AutoVision.servingwebcontent.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -9,22 +15,12 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.List;
-import java.util.Set;
-import java.util.UUID;
 
 
 @Controller
 public class mainController {
-    @Autowired
-    private UserRepos userRepos;
-
     @Autowired
     private ParkingPlaceRepos parkingPlaceRepos;
 
@@ -33,12 +29,6 @@ public class mainController {
 
     @Autowired
     private StoryRepos storyRepos;
-
-    @Autowired
-    private UserService userService;
-
-    @Value("${upload.path}")
-    private String uploadPath;
 
     @GetMapping("/")
     public String greeting(Model model,

@@ -2,7 +2,6 @@ package com.AutoVision.servingwebcontent.controller;
 
 import com.AutoVision.servingwebcontent.domain.Car;
 import com.AutoVision.servingwebcontent.domain.ParkingPlace;
-import com.AutoVision.servingwebcontent.domain.Role;
 import com.AutoVision.servingwebcontent.domain.Story;
 import com.AutoVision.servingwebcontent.repos.CarRepos;
 import com.AutoVision.servingwebcontent.repos.ParkingPlaceRepos;
@@ -24,14 +23,12 @@ import java.util.UUID;
 
 @Controller
 public class PytonController {
-    @Autowired
-    private UserRepos userRepos;
-
-    @Autowired
-    private ParkingPlaceRepos parkingPlaceRepos;
 
     @Autowired
     private CarRepos carRepos;
+
+    @Autowired
+    private ParkingPlaceRepos parkingPlaceRepos;
 
     @Autowired
     private StoryRepos storyRepos;
@@ -62,17 +59,37 @@ public class PytonController {
         Process p = Runtime.getRuntime().exec(new String[]{"python", pythonFile});
         BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream(), "windows-1251"));
         String s = br.readLine();
+        File file = new File(uploadPath + "/" + resultFilename);
+        boolean b = file.delete();
         Car car = carRepos.findByNumber(s);
         boolean check = true;
         if(car == null){
             check = false;
         }
         else{
+            if(!car.isInParking()) {
+                if (!car.isActive()) {
+                    model.addAttribute("mes", false);
+                    model.addAttribute("access", false);
+                    model.addAttribute("number", s);
+                    return "cameraCheck";
+                }
+                int kolvo = parkingPlaceRepos.findByUserId(car.getUser().getId()).size();
+                int inParking = carRepos.findByInParking(true).size();
+                if (inParking + 1 > kolvo) {
+                    model.addAttribute("mes", true);
+                    model.addAttribute("access", false);
+                    model.addAttribute("number", s);
+                    return "cameraCheck";
+                }
+            }
             Story story = new Story();
             Date date = new Date();
             story.setTime(date);
             story.setCar(car);
             storyRepos.save(story);
+            car.changeInParking();
+            carRepos.save(car);
         }
         model.addAttribute("access", check);
         model.addAttribute("number", s);

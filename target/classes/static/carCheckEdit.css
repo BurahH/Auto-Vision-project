@@ -1,3 +1,10 @@
+
+.skrol {
+    height:700px;
+    overflow-Y: auto;
+    overflow-X: hidden;
+}
+
 .title2 {
     font-family: 'Playfair Display';
     font-style: normal;

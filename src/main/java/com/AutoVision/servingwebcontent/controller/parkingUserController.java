@@ -3,7 +3,10 @@ package com.AutoVision.servingwebcontent.controller;
 import com.AutoVision.servingwebcontent.domain.Card;
 import com.AutoVision.servingwebcontent.domain.ParkingPlace;
 import com.AutoVision.servingwebcontent.domain.User;
-import com.AutoVision.servingwebcontent.repos.*;
+import com.AutoVision.servingwebcontent.repos.CarRepos;
+import com.AutoVision.servingwebcontent.repos.CardRepos;
+import com.AutoVision.servingwebcontent.repos.ParkingPlaceRepos;
+import com.AutoVision.servingwebcontent.repos.StoryRepos;
 import com.AutoVision.servingwebcontent.service.ParkingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -29,15 +32,6 @@ public class parkingUserController {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
-
-    @Autowired
-    private CarRepos carRepos;
-
-    @Autowired
-    private StoryRepos storyRepos;
-
-    @Autowired
-    private ParkingService parkingService;
 
     @GetMapping("/view")
     public String parking(Model model){

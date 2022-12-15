@@ -1,7 +1,6 @@
 package com.AutoVision.servingwebcontent.controller;
 
 import com.AutoVision.servingwebcontent.domain.ParkingPlace;
-import com.AutoVision.servingwebcontent.domain.User;
 import com.AutoVision.servingwebcontent.repos.CarRepos;
 import com.AutoVision.servingwebcontent.repos.ParkingPlaceRepos;
 import com.AutoVision.servingwebcontent.repos.StoryRepos;
@@ -16,17 +15,9 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 @RequestMapping("/parking")
 public class parkingController {
-    @Autowired
-    private UserRepos userRepos;
 
     @Autowired
     private ParkingPlaceRepos parkingPlaceRepos;
-
-    @Autowired
-    private CarRepos carRepos;
-
-    @Autowired
-    private StoryRepos storyRepos;
 
     @Autowired
     private ParkingService parkingService;

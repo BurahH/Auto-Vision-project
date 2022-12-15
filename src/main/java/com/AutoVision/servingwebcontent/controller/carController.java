@@ -1,9 +1,7 @@
 package com.AutoVision.servingwebcontent.controller;
 
 import com.AutoVision.servingwebcontent.domain.Car;
-import com.AutoVision.servingwebcontent.domain.Role;
 import com.AutoVision.servingwebcontent.domain.Story;
-import com.AutoVision.servingwebcontent.domain.User;
 import com.AutoVision.servingwebcontent.repos.CarRepos;
 import com.AutoVision.servingwebcontent.repos.StoryRepos;
 import com.AutoVision.servingwebcontent.repos.UserRepos;
@@ -17,21 +15,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.transaction.Transactional;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
-import java.util.Map;
 import java.util.UUID;
 
 @Controller
 @RequestMapping("/car")
 public class carController {
-    @Autowired
-    private UserRepos userRepos;
-
-    @Autowired
-    private UserService userService;
 
     @Autowired
     private CarService carService;

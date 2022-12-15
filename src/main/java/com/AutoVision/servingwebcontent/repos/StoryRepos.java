@@ -1,6 +1,5 @@
 package com.AutoVision.servingwebcontent.repos;
 
-import com.AutoVision.servingwebcontent.domain.ParkingPlace;
 import com.AutoVision.servingwebcontent.domain.Story;
 import org.springframework.data.repository.CrudRepository;
 

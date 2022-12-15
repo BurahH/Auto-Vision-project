@@ -10,7 +10,7 @@
             <th scope="col">Пользователь</th>
             <th scope="col">Модель</th>
             <th scope="col">Номер</th>
-            <th scope="col">Ссылка на редактирование</th>
+            <th scope="col">Ссылка на верификацию</th>
         </tr>
         </thead>
         <tbody>
@@ -27,7 +27,7 @@
                 </#if>
                 <td>${car.model}</td>
                 <td>${car.number}</td>
-                <td><a class="table-hr" href="/checklist/carlist/${car.id}">Редактировать</a> </td>
+                <td><a class="table-hr" href="/checklist/carlist/${car.id}">Верифицировать</a> </td>
             </tr>
         </#list>
         </tbody>

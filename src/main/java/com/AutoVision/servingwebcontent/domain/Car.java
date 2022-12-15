@@ -1,11 +1,6 @@
 package com.AutoVision.servingwebcontent.domain;
 
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
-
 import javax.persistence.*;
-import java.util.Set;
 
 @Entity
 public class Car {
@@ -14,12 +9,16 @@ public class Car {
     private Long id;
 
     private String number;
+
     private String model;
+
     private String vin;
 
     private String sts;
 
     private boolean active;
+
+    private boolean inParking;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
@@ -27,6 +26,7 @@ public class Car {
 
     public Car() {
         this.active = false;
+        this.inParking = false;
     }
 
     public Long getId() {
@@ -83,5 +83,22 @@ public class Car {
 
     public void setSts(String sts) {
         this.sts = sts;
+    }
+
+    public boolean isInParking() {
+        return inParking;
+    }
+
+    public void setInParking(boolean inParking) {
+        this.inParking = inParking;
+    }
+
+    public void changeInParking(){
+        if(inParking == true){
+            inParking = false;
+        }
+        else {
+            inParking = true;
+        }
     }
 }

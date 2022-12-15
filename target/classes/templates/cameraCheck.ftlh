@@ -21,7 +21,7 @@
     <div class="form-group">
         <label class="col-sm-21 col-form-label"> Доступ на парковку : </label>
         <div class="col-sm-21">
-            <p class="text-muted mb-0"><#if access??><#if access>Разрешен<#else>Запрещен</#if></#if></p>
+            <p class="text-muted mb-0"><#if access??><#if access>Разрешен<#else>Запрещено, <#if mes??><#if mes = true>на парковке максимально число авто<#else>автомобиль не подтвержден</#if><#else>номер не найден</#if> </#if></#if></p>
         </div>
     </div>
 

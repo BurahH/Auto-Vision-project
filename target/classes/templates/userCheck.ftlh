@@ -9,7 +9,7 @@
         <tr>
             <th scope="col">Логин</th>
             <th scope="col">Email</th>
-            <th scope="col">Ссылка на редактирование</th>
+            <th scope="col">Ссылка на верифицирование</th>
         </tr>
         </thead>
         <tbody>
@@ -17,7 +17,7 @@
             <tr>
                 <td>${user.username}</td>
                 <td>${user.email}</td>
-                <td><a class="table-hr" href="/checklist/${user.id}">Редактировать</a> </td>
+                <td><a class="table-hr" href="/checklist/${user.id}">Верифицировать</a> </td>
             </tr>
         </#list>
         </tbody>
