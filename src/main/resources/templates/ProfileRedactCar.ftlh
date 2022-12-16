@@ -90,7 +90,7 @@
 
     <script>
         $.mask.definitions['h'] = '[А-Я]';
-        $('.mask-car').mask('h999hh');
+        $('.mask-car').mask('h999hh99?9');
     </script>
     <script>
         function resetLogin(){

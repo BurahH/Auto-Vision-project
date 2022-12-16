@@ -7,6 +7,8 @@ import com.AutoVision.servingwebcontent.repos.CarRepos;
 import com.AutoVision.servingwebcontent.repos.ParkingPlaceRepos;
 import com.AutoVision.servingwebcontent.repos.StoryRepos;
 import com.AutoVision.servingwebcontent.repos.UserRepos;
+import org.apache.commons.net.ntp.NTPUDPClient;
+import org.apache.commons.net.ntp.TimeInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.*;
+import java.net.InetAddress;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -83,8 +86,13 @@ public class PytonController {
                     return "cameraCheck";
                 }
             }
+            String TIME_SERVER = "time-a.nist.gov";
+            NTPUDPClient timeClient = new NTPUDPClient();
+            InetAddress inetAddress = InetAddress.getByName(TIME_SERVER);
+            TimeInfo timeInfo = timeClient.getTime(inetAddress);
+            long returnTime = timeInfo.getMessage().getTransmitTimeStamp().getTime();
             Story story = new Story();
-            Date date = new Date();
+            Date date = new Date(returnTime);
             story.setTime(date);
             story.setCar(car);
             storyRepos.save(story);
