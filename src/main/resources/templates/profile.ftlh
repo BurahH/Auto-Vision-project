@@ -2,6 +2,18 @@
 <#import "parts/commonNew.ftlh" as common>
 
 <@common.page>
+    <#if message??>
+        <div class="row">
+            <div class="col-md-7 offset-md-3">
+                <div class="alert alert-danger" role="alert">
+                    ${message}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close" onclick="closeAlert()">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </#if>
     <link rel="stylesheet" href="../static/carCheckEdit.css" type="text/css">
     <script src="https://snipp.ru/cdn/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://snipp.ru/cdn/maskedinput/jquery.maskedinput.min.js"></script>

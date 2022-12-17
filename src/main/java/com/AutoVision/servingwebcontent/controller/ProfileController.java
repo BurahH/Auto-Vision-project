@@ -91,10 +91,18 @@ public class ProfileController {
                                         @RequestParam String password,
                                         @RequestParam String email
     ){
-        userService.updateProfile(user, password, email);
-        model.addAttribute("username", user.getUsername());
-        model.addAttribute("email", user.getEmail());
-
+        if(user.getEmail().equals(email) && password == ""){
+            model.addAttribute("message", "Не введено новых данных");
+            model.addAttribute("username", user.getUsername());
+            model.addAttribute("email", user.getEmail());
+            return "profileSecurity";
+        }
+        boolean b = userService.updateProfile(user, password, email);
+        if(!b){
+            model.addAttribute("message", "Пользователь с таким email уже существует");
+        }
+            model.addAttribute("username", user.getUsername());
+            model.addAttribute("email", user.getEmail());
         return "profileSecurity";
     }
 
@@ -219,14 +227,14 @@ public class ProfileController {
         }
         else{
             Car findCar = carRepos.findByNumber(number);
-            if((findCar != null) && (!findCar.getNumber().equals(number))){
+            if((findCar != null) && (findCar.getNumber().equals(number))){
                 model.addAttribute("classInscription", "alert alert-danger");
                 model.addAttribute("message", "Автомобиль с таким номером уже существует");
                 model.addAttribute("car", car);
                 return "ProfileRedactCar";
             }
             findCar = carRepos.findByVin(number);
-            if((findCar != null) && (!findCar.getVin().equals(vin))){
+            if((findCar != null) && (findCar.getVin().equals(vin))){
                 model.addAttribute("classInscription", "alert alert-danger");
                 model.addAttribute("message", "Автомобиль с таким VIN номером уже существует");
                 model.addAttribute("car", car);

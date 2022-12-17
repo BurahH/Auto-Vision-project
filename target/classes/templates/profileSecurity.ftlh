@@ -15,7 +15,7 @@
     <div class="form-group">
         <div class="col-sm-21 col-form-label"> E-mail : </div>
         <div class="col-sm-6">
-            <input type="email" name="email" class="form-control2" value="${email}"/>
+            <input type="email" name="email" class="form-control2" value="${email}" required/>
         </div>
     </div>
     <div class="form-group">

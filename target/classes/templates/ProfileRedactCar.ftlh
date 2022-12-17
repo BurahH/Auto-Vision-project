@@ -17,19 +17,22 @@
         <div class="form-group">
             <label class="col-sm-21 col-form-label"> Модель автомобиля : </label>
             <div class="col-sm-6">
-                <input type="text" name="modelCar" class="form-control2" value="${car.model}" required/>
+                <input type="text" id="modelCar" name="modelCar" class="form-control2" value="${car.model}" required/>
+                <div class="invalid-feedback" id="modelCarF"></div>
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-21 col-form-label"> Номер автомобиля : </label>
             <div class="col-sm-6">
-                <input type="text" name="number" class="mask-car form-control2" value="${car.number}" required/>
+                <input type="text" id="number" name="number" class="mask-car form-control2" value="${car.number}" required/>
+                <div class="invalid-feedback" id="numberF"></div>
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-21 col-form-label"> VIN автомобиля : </label>
             <div class="col-sm-6">
                 <input type="text" name="vin" class="form-control2" value="${car.vin}" required/>
+                <div class="invalid-feedback" id="vinF"></div>
             </div>
         </div>
 
@@ -56,41 +59,41 @@
                 </button>
             </div>
 
-            <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Удалить автомобиль</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="resetLogin()">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="col-sm-31">
-                            Вы уверены? Это действие нельзя отменить. Для подтверждения удаления введите номер автомобиля.
-                            <div class="form-group">
-                                <label class="col-sm-21 col-form-label"> Номер: </label>
-                                <div class="col-sm-6">
-                                    <input type="text" name="numberCar" class="form-control2" placeholder="Номер" id="Login" required/>
-                                </div>
+            <input type="hidden" value="${car.id}" name="carId">
+            <input type="hidden" name="_csrf" value="${_csrf.token}" />
+            <button type="submit" class="btn btnp3" name="save">Сохранить</button>
+        <a class="btn btn-outline-secondary btnl" href="/profile" role="button">Назад</a>
+
+        <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Удалить автомобиль</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="resetLogin()">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="col-sm-31">
+                        Вы уверены? Это действие нельзя отменить. Для подтверждения удаления введите номер автомобиля.
+                        <div class="form-group">
+                            <label class="col-sm-21 col-form-label"> Номер: </label>
+                            <div class="col-sm-6">
+                                <input type="text" name="numberCar" class="form-control2" placeholder="Номер" id="Login"/>
                             </div>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-outline-secondary btnl" data-dismiss="modal" onclick="resetLogin()">Отмена</button>
-                            <button type="submit" class="btn btnp" name="delete">Удалить</button>
-                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary btnl" data-dismiss="modal" onclick="resetLogin()">Отмена</button>
+                        <button type="button" class="btn btnp" name="delete" onclick="form_submit()">Удалить</button>
                     </div>
                 </div>
             </div>
-
-            <input type="hidden" value="${car.id}" name="carId">
-            <input type="hidden" name="_csrf" value="${_csrf.token}" />
-            <button type="submit" class="btn btnp3" onclick="form_submit()">Сохранить</button>
-        <a class="btn btn-outline-secondary btnl" href="/profile" role="button">Назад</a>
+        </div>
     </form>
 
     <script>
         $.mask.definitions['h'] = '[А-Я]';
-        $('.mask-car').mask('h999hh');
+        $('.mask-car').mask('h999hh99?9');
     </script>
     <script>
         function resetLogin(){
@@ -100,5 +103,6 @@
             document.getElementById("editUser").submit();
         }
     </script>
+
 
 </@common.page>

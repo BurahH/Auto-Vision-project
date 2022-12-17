@@ -93,14 +93,14 @@ public class carController {
         }
         else{
             Car findCar = carRepos.findByNumber(number);
-            if((findCar != null) && (!findCar.getNumber().equals(number))){
+            if((findCar != null) && (findCar.getNumber().equals(number))){
                 model.addAttribute("classInscription", "alert alert-danger");
                 model.addAttribute("message", "Автомобиль с таким номером уже существует");
                 model.addAttribute("car", car);
                 return "carEdit";
             }
             findCar = carRepos.findByVin(number);
-            if((findCar != null) && (!findCar.getVin().equals(vin))){
+            if((findCar != null) && (findCar.getVin().equals(vin))){
                 model.addAttribute("classInscription", "alert alert-danger");
                 model.addAttribute("message", "Автомобиль с таким VIN номером уже существует");
                 model.addAttribute("car", car);

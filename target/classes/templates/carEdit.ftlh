@@ -29,19 +29,19 @@
         <div class="form-group">
             <label class="col-sm-21 col-form-label"> Модель автомобиля : </label>
             <div class="col-sm-6">
-                <input type="text" name="modelCar" class="form-control2" value="${car.model}"/>
+                <input type="text" name="modelCar" class="form-control2" value="${car.model}" required/>
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-21 col-form-label"> Номер автомобиля : </label>
             <div class="col-sm-6">
-                <input type="text" name="number" class="mask-car form-control2" value="${car.number}"/>
+                <input type="text" name="number" class="mask-car form-control2" value="${car.number}" required/>
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-21 col-form-label"> VIN автомобиля : </label>
             <div class="col-sm-6">
-                <input type="text" name="vin" class="form-control2" value="${car.vin}"/>
+                <input type="text" name="vin" class="form-control2" value="${car.vin}" required/>
             </div>
         </div>
 
@@ -94,7 +94,7 @@
                         <div class="form-group">
                             <label class="col-sm-21 col-form-label"> Номер: </label>
                             <div class="col-sm-6">
-                                <input type="text" name="numberCar" class="mask-car form-control2" placeholder="Номер" id="Login" required/>
+                                <input type="text" name="numberCar" class="mask-car form-control2" placeholder="Номер" id="Login"/>
                             </div>
                         </div>
                     </div>
@@ -108,7 +108,7 @@
 
         <input type="hidden" value="${car.id}" name="carId">
         <input type="hidden" name="_csrf" value="${_csrf.token}" />
-        <button type="submit" class="btn btnp3" onclick="form_submit()">Сохранить</button>
+        <button type="submit" class="btn btnp3">Сохранить</button>
         <a class="btn btn-outline-secondary btnl" href="/car" role="button">Назад</a>
     </form>
 

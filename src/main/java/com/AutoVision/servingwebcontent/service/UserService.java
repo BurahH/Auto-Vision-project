@@ -175,11 +175,15 @@ public class UserService implements UserDetailsService {
         userRepos.save(user);
     }
 
-    public void updateProfile(User user, String password, String email) {
+    public boolean updateProfile(User user, String password, String email) {
         String userEmail = user.getEmail();
 
         boolean isEmailChange = ((email != null) && (!email.equals(userEmail)));
-        if(isEmailChange){
+        User user1 = userRepos.findByEmail(email);
+        if((user1 != null) && (user1.getEmail().equals(email))){
+            return false;
+        }
+        if((isEmailChange)){
             user.setEmail(email);
 
             user.setActivationCode(UUID.randomUUID().toString());
@@ -192,7 +196,6 @@ public class UserService implements UserDetailsService {
             );
 
             mailSenderService.send(user.getEmail(), "Activation code", message);
-
         }
 
         if((password != null) && (password != "")){
@@ -200,6 +203,7 @@ public class UserService implements UserDetailsService {
         }
 
         userRepos.save(user);
+        return true;
     }
 
     public  List<User> findUser(String filter) {

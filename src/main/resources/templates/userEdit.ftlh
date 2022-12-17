@@ -16,13 +16,13 @@
         <div class="form-group">
             <div class="col-sm-21 col-form-label"> E-mail : </div>
             <div class="col-sm-6">
-                <input type="text" name="email" class="form-control4" value="${user.email}"/>
+                <input type="text" name="email" class="form-control4" value="${user.email}" required/>
             </div>
         </div>
         <div class="form-group">
             <div class="col-sm-21 col-form-label"> Логин : </div>
             <div class="col-sm-6">
-                <input type="text" name="username" class="form-control4" value="${user.username}"/>
+                <input type="text" name="username" class="form-control4" value="${user.username}" required/>
             </div>
         </div>
 
@@ -99,6 +99,11 @@
         </button>
         </div>
 
+        <input type="hidden" value="${user.id}" name="userId">
+        <input type="hidden" name="_csrf" value="${_csrf.token}" />
+        <button type="submit" class="btn btnp3" name="save">Сохранить</button>
+        <a class="btn btn-outline-secondary btnl" href="/user" role="button">Назад</a>
+
         <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -113,22 +118,17 @@
                         <div class="form-group">
                             <div class="col-sm-21 col-form-label"> Логин: </div>
                             <div class="col-sm-6">
-                                <input type="username" name="adminLogin" class="form-control2" placeholder="login" id="Login" required/>
+                                <input type="username" name="adminLogin" class="form-control2" placeholder="login" id="Login"/>
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-outline-secondary btnl" data-dismiss="modal" onclick="resetLogin()">Отмена</button>
-                        <button type="submit" class="btn btnp3" name="delete">Удалить</button>
+                        <button type="submit" class="btn btnp3" name="delete" onclick="form_submit()">Удалить</button>
                     </div>
                 </div>
             </div>
         </div>
-
-        <input type="hidden" value="${user.id}" name="userId">
-        <input type="hidden" name="_csrf" value="${_csrf.token}" />
-        <button type="submit" class="btn btnp3" onclick="form_submit()">Сохранить</button>
-        <a class="btn btn-outline-secondary btnl" href="/user" role="button">Назад</a>
     </form>
     <script>
         function resetLogin(){
